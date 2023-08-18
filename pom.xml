@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.proyecto.proyecto_poo_farmacia/com.proyecto.proyecto_poo_farmacia.HelloApplication
+                                com.proyecto.proyecto_poo_farmacia/com.proyecto.proyecto_poo_farmacia.mainP
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
