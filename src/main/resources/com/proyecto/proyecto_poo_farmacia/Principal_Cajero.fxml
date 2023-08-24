@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="login_cajero" prefHeight="424.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.login_c_controlador">
+   <children>
+      <Label fx:id="bienvenido_label" layoutX="52.0" layoutY="61.0" text="BIENVENIDO">
+         <font>
+            <Font name="Franklin Gothic Book" size="28.0" />
+         </font></Label>
+      <Label fx:id="nombre_label" layoutX="243.0" layoutY="61.0" text="User_Cajero" textFill="#686767">
+         <font>
+            <Font name="Franklin Gothic Book" size="28.0" />
+         </font></Label>
+      <Label fx:id="pregunta_label" layoutX="141.0" layoutY="126.0" text="¿Qué deseas hacer?">
+         <font>
+            <Font name="Franklin Gothic Book" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="nueva_fac_button" layoutX="141.0" layoutY="196.0" mnemonicParsing="false" onAction="#initialize" prefHeight="33.0" prefWidth="173.0" text="Nueva Factura">
+         <font>
+            <Font name="Franklin Gothic Book" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="buscar_button" layoutX="141.0" layoutY="256.0" mnemonicParsing="false" onAction="#initialize" prefHeight="33.0" prefWidth="173.0" text="Buscar Producto">
+         <font>
+            <Font name="Franklin Gothic Book" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="logout_button" layoutX="174.0" layoutY="331.0" mnemonicParsing="false" onAction="#initialize" prefHeight="24.0" prefWidth="107.0" text="Cerrar Sesión">
+         <font>
+            <Font name="Franklin Gothic Book" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

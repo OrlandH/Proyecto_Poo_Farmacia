@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.LoginControlador">
    <children>
-      <Button layoutX="145.0" layoutY="200.0" mnemonicParsing="false" text="Button" />
+      <Label fx:id="BienvenidaLabel" layoutX="79.0" layoutY="45.0" text="Bienvenido Farmacias Ayayay">
+         <font>
+            <Font name="Franklin Gothic Medium" size="26.0" />
+         </font></Label>
+      <Label fx:id="LoginLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="93.0" text="LOGIN" textAlignment="CENTER" textFill="#4d4d4d">
+         <font>
+            <Font name="Franklin Gothic Medium" size="18.0" />
+         </font></Label>
+      <Label fx:id="UserLabel" layoutX="108.0" layoutY="155.0" text="User">
+         <font>
+            <Font name="Franklin Gothic Book" size="15.0" />
+         </font></Label>
+      <Label fx:id="PassLabel" layoutX="108.0" layoutY="214.0" text="Contrasena">
+         <font>
+            <Font name="Franklin Gothic Book" size="15.0" />
+         </font></Label>
+      <Label fx:id="RolLabel" layoutX="113.0" layoutY="274.0" text="Rol">
+         <font>
+            <Font name="Franklin Gothic Book" size="15.0" />
+         </font></Label>
+      <TextField fx:id="user_field" layoutX="253.0" layoutY="153.0" prefHeight="25.0" prefWidth="150.0">
+         <font>
+            <Font name="JetBrains Mono Light" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <PasswordField fx:id="pass_field" layoutX="254.0" layoutY="212.0" prefHeight="25.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="JetBrains Mono Light" size="12.0" />
+         </font></PasswordField>
+      <ComboBox fx:id="rol_field" layoutX="253.0" layoutY="272.0" onAction="#initialize" prefWidth="150.0" />
+      <Label fx:id="estado_label" alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="322.0" textFill="#611d1d">
+         <font>
+            <Font name="JetBrains Mono ExtraBold" size="15.0" />
+         </font></Label>
+      <Button fx:id="login_button" layoutX="95.0" layoutY="366.0" mnemonicParsing="false" onAction="#initialize" prefHeight="42.0" prefWidth="90.0" text="Ingresar">
+         <font>
+            <Font name="JetBrains Mono Light Italic" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor></Button>
+      <Button fx:id="limpiar_button" layoutX="305.0" layoutY="366.0" mnemonicParsing="false" onAction="#initialize" prefHeight="42.0" prefWidth="90.0" text="Limpiar">
+         <font>
+            <Font name="JetBrains Mono Light Italic" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

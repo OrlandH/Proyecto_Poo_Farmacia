@@ -5,4 +5,6 @@ module com.proyecto.proyecto_poo_farmacia {
 
     opens com.proyecto.proyecto_poo_farmacia to javafx.fxml;
     exports com.proyecto.proyecto_poo_farmacia;
+    exports com.proyecto.proyecto_poo_farmacia.controladores;
+    opens com.proyecto.proyecto_poo_farmacia.controladores to javafx.fxml;
 }
