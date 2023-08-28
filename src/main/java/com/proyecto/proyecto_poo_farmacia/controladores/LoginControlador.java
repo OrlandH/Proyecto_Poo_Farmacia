@@ -2,8 +2,9 @@ package com.proyecto.proyecto_poo_farmacia.controladores;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-public class LoginControlador {
+public class LoginControlador{
     @FXML
     private TextField user_field;
     @FXML

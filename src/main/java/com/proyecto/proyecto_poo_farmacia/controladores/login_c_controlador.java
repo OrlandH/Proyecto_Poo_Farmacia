@@ -10,21 +10,15 @@ public class login_c_controlador {
     @FXML
     private Button nueva_fac_button;
     @FXML
-    private Button buscar_button;
-    @FXML
     private Button logout_button;
     //Principal
     @FXML
     private void initialize() {
         nueva_fac_button.setOnAction(event -> cambiar_fac());
-        buscar_button.setOnAction(event -> cambiar_bus());
         logout_button.setOnAction(event -> logout());
     }
     //Funciones
     private void cambiar_fac(){
-
-    }
-    private void cambiar_bus(){
 
     }
     private void logout(){

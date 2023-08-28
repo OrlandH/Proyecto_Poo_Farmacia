@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/buscar_c_controlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/factura_controlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/login_c_controlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Buscar_Cajero.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Nueva_Factura_Cajero.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Dibujo de 3 interfaces y controladores basicos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/LoginControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/buscar_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/factura_controlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/login_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/login_c_controlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/mainP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/mainP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Buscar_Cajero.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Fac_Cajero.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Nueva_Factura_Cajero.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,12 +106,28 @@
       <workItem from="1692655565894" duration="616000" />
       <workItem from="1692749205058" duration="321000" />
       <workItem from="1692750209464" duration="1619000" />
-      <workItem from="1692828698666" duration="7399000" />
+      <workItem from="1692828698666" duration="7430000" />
+      <workItem from="1692916802533" duration="5164000" />
+      <workItem from="1693260066588" duration="69000" />
+      <workItem from="1693262464823" duration="3749000" />
     </task>
+    <task id="LOCAL-00001" summary="Dibujo de 3 interfaces y controladores basicos">
+      <option name="closed" value="true" />
+      <created>1692839677151</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1692839677151</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Dibujo de 3 interfaces y controladores basicos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dibujo de 3 interfaces y controladores basicos" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
