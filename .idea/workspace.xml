@@ -7,8 +7,6 @@
     <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Dibujo Factura y etiquetas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/login_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/login_c_controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Fac_Cajero.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Fac_Cajero.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
