@@ -41,11 +41,11 @@ public class LoginControlador{
     private void login_validar(){
         //Cambiar el FXML
         Login_class_user inicio_sesion = new Login_class_user("","","");
-        String nombre = inicio_sesion.setNombre(user_field.getText());
-        String contrasena = inicio_sesion.setContrasena(pass_field.getText());
-        String tipoUsuario = inicio_sesion.setTipo(rol_field.getValue());
+        inicio_sesion.setNombre(user_field.getText());
+        inicio_sesion.setContrasena(pass_field.getText());
+        inicio_sesion.setTipo(rol_field.getValue());
 
-        if (nombre.isEmpty() || contrasena.isEmpty() || tipoUsuario == null) {
+        if (inicio_sesion.getNombre().isEmpty() || inicio_sesion.getContrasena().isEmpty() || inicio_sesion.getTipo() == null) {
             estado_label.setText("Por favor, complete todos los campos.");
             return;
         }
@@ -53,25 +53,42 @@ public class LoginControlador{
         try{ Connection connection = DriverManager.getConnection(DB_URL,USER,PASS);
                 String SQL_QUERY_LOGIN =  "SELECT * FROM Usuarios WHERE Nombre = ? AND Contraseña = ? AND Tipo = ?";
                 PreparedStatement statement = connection.prepareStatement(SQL_QUERY_LOGIN);
-                statement.setString(1,nombre);
-                statement.setString(2,contrasena);
-                statement.setString(3,tipoUsuario);
+                statement.setString(1,inicio_sesion.getNombre());
+                statement.setString(2,inicio_sesion.getContrasena());
+                statement.setString(3,inicio_sesion.getTipo());
 
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()){
                     estado_label.setText("Inicio de Sesion exitoso.");
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml"));
-                    Parent root;
-                    try {
-                        root = fxmlLoader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        return;
+                    if (inicio_sesion.getTipo().equals("Cajero")){
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml"));
+                        Parent root;
+
+                        try {
+                            root = fxmlLoader.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            return;
+                        }
+                        // Cambiar la escena
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) login_button.getScene().getWindow();
+                        stage.setScene(scene);
+                    } else {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Admin.fxml"));
+                        Parent root;
+
+                        try {
+                            root = fxmlLoader.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            return;
+                        }
+                        // Cambiar la escena
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) login_button.getScene().getWindow();
+                        stage.setScene(scene);
                     }
-                    // Cambiar la escena
-                    Scene scene = new Scene(root);
-                    Stage stage = (Stage) login_button.getScene().getWindow();
-                    stage.setScene(scene);
                 } else {
                     estado_label.setText("Credenciales Incorrectas ! Ingrese nuevamente los datos");
                 }
