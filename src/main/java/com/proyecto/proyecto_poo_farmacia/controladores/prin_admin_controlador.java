@@ -1,8 +1,14 @@
 package com.proyecto.proyecto_poo_farmacia.controladores;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class prin_admin_controlador {
     @FXML
@@ -34,6 +40,19 @@ public class prin_admin_controlador {
 
     }
     private void logout(){
+        //Cambiar el FXML
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        // Cambiar la escena
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) logout_button.getScene().getWindow();
+        stage.setScene(scene);
 
     }
 }
