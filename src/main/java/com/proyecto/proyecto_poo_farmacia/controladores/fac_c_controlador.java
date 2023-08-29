@@ -1,9 +1,16 @@
 package com.proyecto.proyecto_poo_farmacia.controladores;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.sql.*;
 public class fac_c_controlador {
     //Cabecera variables
     @FXML
@@ -54,6 +61,12 @@ public class fac_c_controlador {
     @FXML
     private TextField cod_field;
     private int contadorSpinner_Limite; //Este contador debe tener el limite de stock del producto. Validar con base de datos y cambiar por el 20 en SpinnerValueFactory
+
+    //CONEXION SQL
+    static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
+    static final String USER = "root";
+    static final String PASS = "root_bas3";
+
     //Principal
     @FXML
     public void initialize() {
@@ -67,6 +80,8 @@ public class fac_c_controlador {
         quitar_button.setOnAction(event -> eliminarprod());
         enviar_button.setOnAction(event -> enviarfac());
         salir_button.setOnAction(event -> regresar());
+
+
 
         //Contador del Spinner
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20);
@@ -87,9 +102,17 @@ public class fac_c_controlador {
 
     }
     private void limpiar(){
-
+        num_fac_textfield.setText("");
+        nom_textfield.setText("");
+        idcli_textfield.setText("");
+        tel_textfield.setText("");
+        correo_textfield.setText("");
+        nom_textfield.setText("");
+        cod_field.setText("");
+        total_textfield.setText("");
     }
     private void agregarprod(){
+
 
     }
     private void eliminarprod(){
@@ -106,6 +129,21 @@ public class fac_c_controlador {
 
     }
     private void regresar(){
-
+        //Cambiar el FXML
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        // Cambiar la escena
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) salir_button.getScene().getWindow();
+        stage.setScene(scene);
     }
+
+    // OJO -----> FALTA implementar los datos de la empresa
+
 }

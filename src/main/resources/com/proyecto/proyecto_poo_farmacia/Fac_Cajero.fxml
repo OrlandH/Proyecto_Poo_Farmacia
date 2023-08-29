@@ -67,40 +67,35 @@
       </Pane>
       <Pane fx:id="factura_main" prefHeight="598.0" prefWidth="745.0">
          <children>
-            <Pane fx:id="encabezado_panel" layoutX="304.0" prefHeight="119.0" prefWidth="441.0">
+            <Pane fx:id="encabezado_panel" layoutY="3.0" prefHeight="91.0" prefWidth="223.0">
                <children>
                   <Label fx:id="cajero_label" layoutX="32.0" layoutY="36.0" text="Cajero: ">
                      <font>
-                        <Font name="Franklin Gothic Book" size="22.0" />
+                        <Font name="Franklin Gothic Book" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nom_label" layoutX="121.0" layoutY="37.0" text="nom_caj">
+                  <Label fx:id="nom_label" layoutX="125.0" layoutY="36.0" text="nom_caj">
                      <font>
-                        <Font name="Franklin Gothic Book" size="20.0" />
+                        <Font name="Franklin Gothic Book" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="user_label" layoutX="114.0" layoutY="76.0" text="user_caj">
+                  <Label layoutX="32.0" layoutY="61.0" text="ID:">
                      <font>
-                        <Font name="Franklin Gothic Book" size="20.0" />
+                        <Font name="Franklin Gothic Book" size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="56.0" layoutY="75.0" text="ID:">
+                  <Label fx:id="user_label" layoutX="126.0" layoutY="61.0" text="user_caj">
                      <font>
-                        <Font name="Franklin Gothic Book" size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="fecha_label" layoutX="321.0" layoutY="37.0" text="fecha">
-                     <font>
-                        <Font name="Franklin Gothic Book" size="19.0" />
+                        <Font name="Franklin Gothic Book" size="17.0" />
                      </font>
                   </Label>
                </children></Pane>
-            <Label fx:id="num_label" layoutX="33.0" layoutY="60.0" text="N°Fac.">
+            <Label fx:id="num_label" layoutX="34.0" layoutY="98.0" text="N°Fac.">
                <font>
                   <Font name="Franklin Gothic Book" size="21.0" />
                </font>
             </Label>
-            <TextField fx:id="num_fac_textfield" layoutX="125.0" layoutY="60.0" prefHeight="25.0" prefWidth="123.0" />
+            <TextField fx:id="num_fac_textfield" layoutX="126.0" layoutY="98.0" prefHeight="25.0" prefWidth="123.0" />
             <Pane fx:id="datos_panel" layoutY="119.0" prefHeight="147.0" prefWidth="745.0">
                <children>
                   <Label fx:id="nombre_label" layoutX="42.0" layoutY="47.0" prefHeight="25.0" prefWidth="154.0" text="Nombre/Razon Social:">
@@ -128,7 +123,6 @@
                         <Font name="Franklin Gothic Medium" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nom_textfield" layoutX="205.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
                   <TextField fx:id="idcli_textfield" layoutX="205.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
                   <TextField fx:id="tel_textfield" layoutX="562.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
                   <TextField fx:id="correo_textfield" layoutX="562.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
@@ -152,6 +146,36 @@
             <Button fx:id="enviar_button" layoutX="403.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="142.0" text="Enviar" />
             <Button fx:id="crearfac_button" layoutX="239.0" layoutY="549.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Crear Factura" />
             <Button fx:id="salir_button" layoutX="22.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="71.0" text="Salir" />
+            <Label fx:id="fecha_label" layoutX="653.0" layoutY="27.0" text="fecha">
+               <font>
+                  <Font name="Franklin Gothic Book" size="19.0" />
+               </font>
+            </Label>
+            <Pane layoutX="286.0" layoutY="7.0" prefHeight="137.0" prefWidth="349.0">
+               <children>
+                  <Label layoutX="76.0" layoutY="8.0" prefHeight="28.0" prefWidth="215.0" text="Farmacia tu Colita" underline="true">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="16.0" layoutY="56.0" prefHeight="17.0" prefWidth="42.0" text="RUC: ">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Label>
+                  <Label layoutX="124.0" layoutY="56.0" text="1760003410001">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Label>
+                  <Label layoutX="14.0" layoutY="83.0" prefHeight="26.0" prefWidth="94.0" text="DIRECCION:">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Label>
+                  <Label layoutX="124.0" layoutY="83.0" prefHeight="26.0" prefWidth="194.0" text="Mariscal Sucre N3-140">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

@@ -82,6 +82,7 @@ public class LoginControlador{
 
     }
     private void limpiarcampos(){
-
+        user_field.setText("");
+        pass_field.setText("");
     }
 }
