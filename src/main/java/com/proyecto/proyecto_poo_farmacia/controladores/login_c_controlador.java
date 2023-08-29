@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class login_c_controlador {
+public class login_c_controlador extends LoginControlador{
     @FXML
     private Label nombre_label;
     @FXML
@@ -20,6 +20,7 @@ public class login_c_controlador {
     //Principal
     @FXML
     private void initialize() {
+        nombre_label.setText(aux_label);
         nueva_fac_button.setOnAction(event -> cambiar_fac());
         logout_button.setOnAction(event -> logout());
     }
