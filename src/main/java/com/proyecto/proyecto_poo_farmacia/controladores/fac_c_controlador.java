@@ -31,7 +31,8 @@ public class fac_c_controlador {
     private Button crearfac_button;
     @FXML
     private Button enviar_button;
-
+    @FXML
+    private Button salir_button;
 
     //Variables para la busqueda
     @FXML
@@ -65,6 +66,7 @@ public class fac_c_controlador {
         selec_button.setOnAction(event -> seleccionaritem());
         quitar_button.setOnAction(event -> eliminarprod());
         enviar_button.setOnAction(event -> enviarfac());
+        salir_button.setOnAction(event -> regresar());
 
         //Contador del Spinner
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20);
@@ -103,5 +105,7 @@ public class fac_c_controlador {
     private void enviarfac(){
 
     }
+    private void regresar(){
 
+    }
 }

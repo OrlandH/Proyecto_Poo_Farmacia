@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Union Busqueda/Factura y creacion de busqueda">
+    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Dibujo Factura y etiquetas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Fac_Cajero.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Fac_Cajero.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/login_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/login_c_controlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,7 @@
       <workItem from="1692828698666" duration="7430000" />
       <workItem from="1692916802533" duration="5164000" />
       <workItem from="1693260066588" duration="69000" />
-      <workItem from="1693262464823" duration="9464000" />
+      <workItem from="1693262464823" duration="10460000" />
     </task>
     <task id="LOCAL-00001" summary="Dibujo de 3 interfaces y controladores basicos">
       <option name="closed" value="true" />
@@ -121,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693266286204</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Dibujo Factura y etiquetas">
+      <option name="closed" value="true" />
+      <created>1693272118605</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693272118605</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +137,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Dibujo de 3 interfaces y controladores basicos" />
     <MESSAGE value="Union Busqueda/Factura y creacion de busqueda" />
-    <option name="LAST_COMMIT_MESSAGE" value="Union Busqueda/Factura y creacion de busqueda" />
+    <MESSAGE value="Dibujo Factura y etiquetas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dibujo Factura y etiquetas" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

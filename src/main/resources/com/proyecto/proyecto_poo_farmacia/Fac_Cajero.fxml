@@ -149,8 +149,9 @@
                </font>
             </Label>
             <TextField fx:id="total_textfield" layoutX="635.0" layoutY="548.0" prefHeight="25.0" prefWidth="80.0" />
-            <Button fx:id="enviar_button" layoutX="205.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="142.0" text="Enviar" />
-            <Button fx:id="crearfac_button" layoutX="33.0" layoutY="549.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Crear Factura" />
+            <Button fx:id="enviar_button" layoutX="403.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="142.0" text="Enviar" />
+            <Button fx:id="crearfac_button" layoutX="239.0" layoutY="549.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Crear Factura" />
+            <Button fx:id="salir_button" layoutX="22.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="71.0" text="Salir" />
          </children>
       </Pane>
    </children>

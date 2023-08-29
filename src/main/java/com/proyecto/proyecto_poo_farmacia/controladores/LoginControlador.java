@@ -2,7 +2,11 @@ package com.proyecto.proyecto_poo_farmacia.controladores;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 import javafx.scene.control.*;
 public class LoginControlador{
     @FXML
@@ -26,6 +30,19 @@ public class LoginControlador{
     }
     //Funciones
     private void login_validar(){
+        //Cambiar el FXML
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        // Cambiar la escena
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) login_button.getScene().getWindow();
+        stage.setScene(scene);
 
     }
     private void limpiarcampos(){
