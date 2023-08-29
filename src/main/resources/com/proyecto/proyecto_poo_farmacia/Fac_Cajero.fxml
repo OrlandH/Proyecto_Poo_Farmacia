@@ -4,91 +4,154 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="buscar_campo" prefHeight="597.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.fac_c_controlador">
+<AnchorPane fx:id="buscar_campo" prefHeight="540.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.fac_c_controlador">
    <children>
-      <Pane fx:id="campo_busqueda" layoutX="672.0" prefHeight="597.0" prefWidth="377.0">
+      <Pane fx:id="campo_busqueda" layoutX="745.0" prefHeight="259.0" prefWidth="425.0">
          <children>
-            <Label fx:id="buscar_label" layoutX="120.0" layoutY="93.0" text="Buscar Producto">
+            <Label fx:id="buscar_label" layoutX="171.0" layoutY="23.0" text="Buscar Producto">
                <font>
                   <Font name="Franklin Gothic Book" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="nombre_label" layoutX="21.0" layoutY="163.0" text="Nombre del Producto:">
+            <Label fx:id="nombre_label" layoutX="39.0" layoutY="93.0" prefHeight="33.0" prefWidth="71.0" text="Nombre del Producto:" wrapText="true">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="cod_label" layoutX="16.0" layoutY="238.0" text="Codigo del Producto:">
+            <Label fx:id="cod_label" layoutX="43.0" layoutY="168.0" prefHeight="33.0" prefWidth="63.0" text="Codigo del Producto:" wrapText="true">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="nombre_field" layoutX="18.0" layoutY="193.0" prefHeight="25.0" prefWidth="343.0" />
-            <TextField fx:id="cod_field" layoutX="18.0" layoutY="268.0" prefHeight="25.0" prefWidth="343.0" />
-            <Button fx:id="buscar_cod_button" layoutX="164.0" layoutY="232.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="196.0" text="Buscar por codigo">
-               <font>
-                  <Font name="Franklin Gothic Book" size="12.0" />
-               </font>
-            </Button>
-            <Label fx:id="stock_label" layoutX="116.0" layoutY="357.0" text="Stock:">
-               <font>
-                  <Font name="Franklin Gothic Book" size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="pvp_label" layoutX="120.0" layoutY="316.0" text="PVP:">
-               <font>
-                  <Font name="Franklin Gothic Book" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="stock_field" editable="false" layoutX="190.0" layoutY="311.0" prefHeight="25.0" prefWidth="105.0" />
-            <TextField fx:id="pvp_field" editable="false" layoutX="190.0" layoutY="352.0" prefHeight="25.0" prefWidth="105.0" />
-            <Button fx:id="clean_button" layoutX="104.0" layoutY="535.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="170.0" text="Limpiar Consulta">
+            <TextField fx:id="nombre_field" layoutX="37.0" layoutY="133.0" prefHeight="25.0" prefWidth="201.0" />
+            <TextField fx:id="cod_field" layoutX="37.0" layoutY="208.0" prefHeight="25.0" prefWidth="201.0" />
+            <Button fx:id="buscar_cod_button" layoutX="121.0" layoutY="172.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="116.0" text="Buscar por codigo">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="cargar_button" layoutX="123.0" layoutY="488.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Agregar Producto">
+            <Button fx:id="clean_button" layoutX="280.0" layoutY="208.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Limpiar Consulta">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="instru_label" layoutX="56.0" layoutY="126.0" text="Ingrese el nombre del producto o el código de producto" textFill="#868686">
-               <font>
-                  <Font name="Franklin Gothic Book" size="12.0" />
-               </font>
-            </Label>
-            <Button fx:id="buscar_nom_button" layoutX="164.0" layoutY="157.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="196.0" text="Buscar por nombre">
+            <Button fx:id="cargar_button" layoutX="280.0" layoutY="133.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Agregar Producto">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Button>
-            <Spinner fx:id="cantidad_box" editable="true" layoutX="196.0" layoutY="445.0" prefHeight="25.0" prefWidth="105.0" />
-            <Label fx:id="cantidad_label" layoutX="37.0" layoutY="450.0" text="Cantidad para agregar:">
+            <Label fx:id="instru_label" alignment="CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="46.0" prefHeight="40.0" prefWidth="338.0" text="Ingrese el nombre del producto o el código de producto" textAlignment="CENTER" textFill="#868686" wrapText="true">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="crearfac_button" layoutX="124.0" layoutY="401.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Crear Factura" />
-            <Label fx:id="cajero_label" layoutX="85.0" layoutY="16.0" text="Cajero: ">
+            <Button fx:id="buscar_nom_button" layoutX="121.0" layoutY="97.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="116.0" text="Buscar por nombre">
                <font>
-                  <Font name="Franklin Gothic Book" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="12.0" />
                </font>
-            </Label>
-            <Label fx:id="nom_label" layoutX="196.0" layoutY="17.0" text="nom_caj">
-               <font>
-                  <Font name="Franklin Gothic Book" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="user_label" layoutX="196.0" layoutY="50.0" text="user_caj">
-               <font>
-                  <Font name="Franklin Gothic Book" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="110.0" layoutY="50.0" text="ID:">
-               <font>
-                  <Font name="Franklin Gothic Book" size="22.0" />
-               </font>
-            </Label>
+            </Button>
+            <Spinner fx:id="cantidad_box" editable="true" layoutX="293.0" layoutY="97.0" prefHeight="25.0" prefWidth="105.0" />
+            <Button fx:id="quitar_button" layoutX="280.0" layoutY="172.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="132.0" text="Eliminar Producto" />
          </children></Pane>
+      <Pane layoutX="745.0" layoutY="259.0" prefHeight="339.0" prefWidth="425.0">
+         <children>
+            <TableView fx:id="tabla_busqueda" layoutX="14.0" layoutY="14.0" prefHeight="273.0" prefWidth="398.0">
+              <columns>
+                <TableColumn fx:id="columna_nombre" prefWidth="273.0" text="Producto" />
+                  <TableColumn fx:id="stock_column" minWidth="0.0" prefWidth="66.0" text="Stock" />
+                  <TableColumn fx:id="pvp_column" prefWidth="58.0" text="P.V.P" />
+              </columns>
+            </TableView>
+            <Button fx:id="selec_button" layoutX="134.0" layoutY="300.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="157.0" text="Seleccionar" />
+         </children>
+      </Pane>
+      <Pane fx:id="factura_main" prefHeight="598.0" prefWidth="745.0">
+         <children>
+            <Pane fx:id="encabezado_panel" layoutX="304.0" prefHeight="119.0" prefWidth="441.0">
+               <children>
+                  <Label fx:id="cajero_label" layoutX="32.0" layoutY="36.0" text="Cajero: ">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nom_label" layoutX="121.0" layoutY="37.0" text="nom_caj">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user_label" layoutX="114.0" layoutY="76.0" text="user_caj">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="75.0" text="ID:">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fecha_label" layoutX="321.0" layoutY="37.0" text="fecha">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="19.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Label fx:id="num_label" layoutX="33.0" layoutY="60.0" text="N°Fac.">
+               <font>
+                  <Font name="Franklin Gothic Book" size="21.0" />
+               </font>
+            </Label>
+            <TextField fx:id="num_fac_textfield" layoutX="125.0" layoutY="60.0" prefHeight="25.0" prefWidth="123.0" />
+            <Pane fx:id="datos_panel" layoutY="119.0" prefHeight="147.0" prefWidth="745.0">
+               <children>
+                  <Label fx:id="nombre_label" layoutX="42.0" layoutY="47.0" prefHeight="25.0" prefWidth="154.0" text="Nombre/Razon Social:">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ci_label" layoutX="42.0" layoutY="95.0" text="CI/RUC:">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="num_label" layoutX="401.0" layoutY="50.0" text="Celular/Telefono:">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email_label" layoutX="401.0" layoutY="95.0" text="Correo Electronico:">
+                     <font>
+                        <Font name="Franklin Gothic Book" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="42.0" layoutY="14.0" text="DATOS CLIENTE:">
+                     <font>
+                        <Font name="Franklin Gothic Medium" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nom_textfield" layoutX="205.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
+                  <TextField fx:id="idcli_textfield" layoutX="205.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
+                  <TextField fx:id="tel_textfield" layoutX="562.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
+                  <TextField fx:id="correo_textfield" layoutX="562.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
+               </children>
+            </Pane>
+            <TableView fx:id="tabla_fac" layoutX="22.0" layoutY="266.0" prefHeight="267.0" prefWidth="700.0">
+              <columns>
+                <TableColumn fx:id="codprod_column" prefWidth="75.0" text="CODPROD" />
+                <TableColumn fx:id="product_column_fac" prefWidth="408.0" text="Producto" />
+                  <TableColumn fx:id="cantidad_column" prefWidth="70.0" text="Cantidad" />
+                  <TableColumn fx:id="pvp_column_fact" prefWidth="73.0" text="P.V.P" />
+                  <TableColumn fx:id="subtotal_column" prefWidth="73.0" text="Subtotal" />
+              </columns>
+            </TableView>
+            <Label fx:id="total_label" layoutX="573.0" layoutY="550.0" text="Total:">
+               <font>
+                  <Font name="Franklin Gothic Book" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="total_textfield" layoutX="635.0" layoutY="548.0" prefHeight="25.0" prefWidth="80.0" />
+            <Button fx:id="enviar_button" layoutX="205.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="142.0" text="Enviar" />
+            <Button fx:id="crearfac_button" layoutX="33.0" layoutY="549.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Crear Factura" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
