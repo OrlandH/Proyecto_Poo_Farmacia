@@ -26,7 +26,6 @@ public class LoginControlador{
     private Button limpiar_button;
     @FXML
     private Label estado_label;
-    public String aux_label;
     private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     private static String USER = "root";
     private static String PASS = "root_bas3";
@@ -60,7 +59,6 @@ public class LoginControlador{
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()){
                     estado_label.setText("Inicio de Sesion exitoso.");
-                    aux_label.equals(inicio_sesion.getNombre());
                     if (inicio_sesion.getTipo().equals("Cajero")){
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml"));
                         Parent root;

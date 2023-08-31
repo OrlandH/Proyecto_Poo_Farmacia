@@ -20,7 +20,6 @@ public class login_c_controlador extends LoginControlador{
     //Principal
     @FXML
     private void initialize() {
-        nombre_label.setText(aux_label);
         nueva_fac_button.setOnAction(event -> cambiar_fac());
         logout_button.setOnAction(event -> logout());
     }

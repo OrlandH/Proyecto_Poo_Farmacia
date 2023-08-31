@@ -144,6 +144,4 @@ public class fac_c_controlador {
         stage.setScene(scene);
     }
 
-    // OJO -----> FALTA implementar los datos de la empresa
-
 }
