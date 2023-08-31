@@ -1,10 +1,14 @@
 package com.proyecto.proyecto_poo_farmacia.controladores;
 
+import com.proyecto.proyecto_poo_farmacia.controladores.POO.Producto_class;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,6 +23,14 @@ public class fac_c_controlador {
     private Label user_label;
     @FXML
     private Label fecha_label;
+    @FXML
+    private Label nombre_emp_label;
+    @FXML
+    private Label ruc_emp_label;
+    @FXML
+    private Label dir_emp_label;
+    @FXML
+    private Label estado_bus_label;
 
 
     //Factura general variables
@@ -60,16 +72,28 @@ public class fac_c_controlador {
     private TextField nombre_field;
     @FXML
     private TextField cod_field;
+
+    //Tablas Producto Busqueda
+    @FXML
+    private TableView<Producto_class> tabla_busqueda;
+    @FXML
+    private TableColumn columna_nombre;
+    @FXML
+    private TableColumn stock_column;
+    ObservableList<Producto_class> productos_lista;
+
     private int contadorSpinner_Limite; //Este contador debe tener el limite de stock del producto. Validar con base de datos y cambiar por el 20 en SpinnerValueFactory
 
     //CONEXION SQL
-    static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
+    static final String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     static final String USER = "root";
     static final String PASS = "root_bas3";
 
     //Principal
     @FXML
     public void initialize() {
+        this.inicializartablaproductos();
+
         //Link de Botones con metodos
         buscar_nom_button.setOnAction(event -> buscarnombre());
         buscar_cod_button.setOnAction(event -> buscarcodigo());
@@ -98,7 +122,37 @@ public class fac_c_controlador {
     private void buscarnombre(){
 
     }
+    private void inicializartablaproductos(){
+        columna_nombre.setCellValueFactory(new PropertyValueFactory<Producto_class, String>("nombre"));
+        stock_column.setCellValueFactory(new PropertyValueFactory<Producto_class, String>("stock"));
+
+        productos_lista = FXCollections.observableArrayList();
+        tabla_busqueda.setItems(productos_lista);
+    }
     private void buscarcodigo(){
+        int codigo = Integer.parseInt(cod_field.getText());
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+            String SQL_Query_select = "SELECT * FROM Productos WHERE ID = ?";
+            try (PreparedStatement pstm = conn.prepareStatement(SQL_Query_select)) {
+                pstm.setInt(1, codigo);
+                try (ResultSet rs = pstm.executeQuery()) {
+                    if (rs.next()) {
+                        Producto_class producto_1 = new Producto_class();
+                        producto_1.setID_producto(String.valueOf(rs.getInt("ID")));
+                        producto_1.setNombre_producto(rs.getString("Nombre"));
+                        producto_1.setPrecio_prod(String.valueOf(rs.getDouble("Precio")));
+                        producto_1.setStock_prod(String.valueOf(rs.getInt("Stock")));
+                        productos_lista.add(producto_1);
+                        estado_bus_label.setText("Producto Encontrado");
+                    } else {
+                        estado_bus_label.setText("Producto No Encontrado");
+                        cod_field.setText("");
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
 
     }
     private void limpiar(){

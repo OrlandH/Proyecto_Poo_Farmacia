@@ -30,12 +30,12 @@
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="clean_button" layoutX="280.0" layoutY="208.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Limpiar Consulta">
+            <Button fx:id="clean_button" disable="true" layoutX="280.0" layoutY="208.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Limpiar Consulta">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="cargar_button" layoutX="280.0" layoutY="133.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Agregar Producto">
+            <Button fx:id="cargar_button" disable="true" layoutX="280.0" layoutY="136.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Agregar Producto">
                <font>
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
@@ -50,8 +50,8 @@
                   <Font name="Franklin Gothic Book" size="12.0" />
                </font>
             </Button>
-            <Spinner fx:id="cantidad_box" editable="true" layoutX="293.0" layoutY="97.0" prefHeight="25.0" prefWidth="105.0" />
-            <Button fx:id="quitar_button" layoutX="280.0" layoutY="172.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="132.0" text="Eliminar Producto" />
+            <Spinner fx:id="cantidad_box" disable="true" editable="true" layoutX="293.0" layoutY="97.0" prefHeight="25.0" prefWidth="105.0" />
+            <Button fx:id="quitar_button" disable="true" layoutX="280.0" layoutY="172.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="132.0" text="Eliminar Producto" />
          </children></Pane>
       <Pane layoutX="745.0" layoutY="259.0" prefHeight="339.0" prefWidth="425.0">
          <children>
@@ -62,7 +62,12 @@
                   <TableColumn fx:id="pvp_column" prefWidth="58.0" text="P.V.P" />
               </columns>
             </TableView>
-            <Button fx:id="selec_button" layoutX="134.0" layoutY="300.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="157.0" text="Seleccionar" />
+            <Button fx:id="selec_button" disable="true" layoutX="134.0" layoutY="300.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="157.0" text="Seleccionar" />
+            <Label fx:id="estado_bus_label" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="-8.0" prefHeight="16.0" prefWidth="398.0" text="Estado Busqueda" textAlignment="CENTER">
+               <font>
+                  <Font name="Franklin Gothic Book" size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane fx:id="factura_main" prefHeight="598.0" prefWidth="745.0">
@@ -95,10 +100,10 @@
                   <Font name="Franklin Gothic Book" size="21.0" />
                </font>
             </Label>
-            <TextField fx:id="num_fac_textfield" layoutX="126.0" layoutY="98.0" prefHeight="25.0" prefWidth="123.0" />
+            <TextField fx:id="num_fac_textfield" disable="true" editable="false" layoutX="126.0" layoutY="98.0" prefHeight="25.0" prefWidth="123.0" />
             <Pane fx:id="datos_panel" layoutY="119.0" prefHeight="147.0" prefWidth="745.0">
                <children>
-                  <Label fx:id="nombre_label" layoutX="42.0" layoutY="47.0" prefHeight="25.0" prefWidth="154.0" text="Nombre/Razon Social:">
+                  <Label fx:id="nombre_cliente_label" layoutX="42.0" layoutY="47.0" prefHeight="25.0" prefWidth="154.0" text="Nombre/Razon Social:">
                      <font>
                         <Font name="Franklin Gothic Book" size="15.0" />
                      </font>
@@ -108,12 +113,12 @@
                         <Font name="Franklin Gothic Book" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="num_label" layoutX="401.0" layoutY="50.0" text="Celular/Telefono:">
+                  <Label fx:id="num_cli_label" layoutX="401.0" layoutY="50.0" text="Celular/Telefono:">
                      <font>
                         <Font name="Franklin Gothic Book" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="email_label" layoutX="401.0" layoutY="95.0" text="Correo Electronico:">
+                  <Label fx:id="email_cli_label" layoutX="401.0" layoutY="95.0" text="Correo Electronico:">
                      <font>
                         <Font name="Franklin Gothic Book" size="15.0" />
                      </font>
@@ -123,10 +128,10 @@
                         <Font name="Franklin Gothic Medium" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="idcli_textfield" layoutX="205.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
-                  <TextField fx:id="tel_textfield" layoutX="562.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
-                  <TextField fx:id="correo_textfield" layoutX="562.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
-                  <TextField fx:id="nom_textfield" layoutX="205.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
+                  <TextField fx:id="idcli_textfield" disable="true" layoutX="205.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
+                  <TextField fx:id="tel_textfield" disable="true" layoutX="562.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
+                  <TextField fx:id="correo_textfield" disable="true" layoutX="562.0" layoutY="92.0" prefHeight="25.0" prefWidth="165.0" />
+                  <TextField fx:id="nom_textfield" disable="true" layoutX="205.0" layoutY="47.0" prefHeight="25.0" prefWidth="165.0" />
                </children>
             </Pane>
             <TableView fx:id="tabla_fac" layoutX="22.0" layoutY="266.0" prefHeight="267.0" prefWidth="700.0">
@@ -143,8 +148,8 @@
                   <Font name="Franklin Gothic Book" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="total_textfield" layoutX="635.0" layoutY="548.0" prefHeight="25.0" prefWidth="80.0" />
-            <Button fx:id="enviar_button" layoutX="403.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="142.0" text="Enviar" />
+            <TextField fx:id="total_textfield" disable="true" editable="false" layoutX="635.0" layoutY="548.0" prefHeight="25.0" prefWidth="80.0" />
+            <Button fx:id="enviar_button" disable="true" layoutX="403.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="142.0" text="Enviar" />
             <Button fx:id="crearfac_button" layoutX="239.0" layoutY="549.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="131.0" text="Crear Factura" />
             <Button fx:id="salir_button" layoutX="22.0" layoutY="548.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="71.0" text="Salir" />
             <Label fx:id="fecha_label" layoutX="653.0" layoutY="27.0" text="fecha">
@@ -154,7 +159,7 @@
             </Label>
             <Pane layoutX="286.0" layoutY="7.0" prefHeight="137.0" prefWidth="349.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="8.0" prefHeight="29.0" prefWidth="349.0" text="Farmacia tu Colita" textAlignment="CENTER">
+                  <Label fx:id="nombre_emp_label" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="8.0" prefHeight="29.0" prefWidth="349.0" text="Farmacia tu Colita" textAlignment="CENTER">
                      <font>
                         <Font name="Franklin Gothic Book" size="25.0" />
                      </font>
@@ -163,7 +168,7 @@
                      <font>
                         <Font name="Franklin Gothic Book" size="13.0" />
                      </font></Label>
-                  <Label layoutX="148.0" layoutY="43.0" text="1760003410001">
+                  <Label fx:id="ruc_emp_label" layoutX="148.0" layoutY="43.0" text="1760003410001">
                      <font>
                         <Font name="Franklin Gothic Book" size="13.0" />
                      </font></Label>
@@ -171,7 +176,7 @@
                      <font>
                         <Font name="Franklin Gothic Book" size="13.0" />
                      </font></Label>
-                  <Label layoutX="150.0" layoutY="56.0" prefHeight="26.0" prefWidth="194.0" text="Mariscal Sucre N3-140">
+                  <Label fx:id="dir_emp_label" layoutX="150.0" layoutY="56.0" prefHeight="26.0" prefWidth="194.0" text="Mariscal Sucre N3-140">
                      <font>
                         <Font name="Franklin Gothic Book" size="13.0" />
                      </font></Label>
