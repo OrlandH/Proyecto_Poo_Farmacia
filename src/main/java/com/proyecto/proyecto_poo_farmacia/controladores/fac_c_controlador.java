@@ -111,7 +111,7 @@ public class fac_c_controlador {
         quitar_button.setOnAction(event -> eliminarprod());
         enviar_button.setOnAction(event -> enviarfac());
         salir_button.setOnAction(event -> regresar());
-
+        cancelar_button.setOnAction(event -> cancelarfac());
 
 
         //Contador del Spinner
@@ -149,6 +149,11 @@ public class fac_c_controlador {
                         nombre_field.setEditable(false);
                         buscar_nom_button.setDisable(true);
                         clean_button.setDisable(false);
+                        if (crearfac_button.isDisabled()){
+                            cantidad_box.setDisable(false);
+                            cargar_button.setDisable(false);
+                            quitar_button.setDisable(false);
+                        }
                         estado_bus_label.setText("Producto Encontrado");
                         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, contadorSpinner_Limite);
                         valueFactory.setValue(1);
@@ -169,9 +174,13 @@ public class fac_c_controlador {
         tabla_busqueda.getItems().clear();
         cod_field.setEditable(true);
         nombre_field.setEditable(true);
+        cantidad_box.setDisable(true);
         buscar_nom_button.setDisable(false);
         buscar_cod_button.setDisable(false);
         clean_button.setDisable(true);
+        cantidad_box.setDisable(true);
+        cargar_button.setDisable(true);
+        quitar_button.setDisable(true);
     }
     private void agregarprod(){
 
@@ -190,6 +199,13 @@ public class fac_c_controlador {
         quitar_button.setDisable(false);
         crearfac_button.setDisable(true);
         cancelar_button.setDisable(false);
+    }
+    private void cancelarfac(){
+        crearfac_button.setDisable(false);
+        cancelar_button.setDisable(true);
+        cantidad_box.setDisable(true);
+        cargar_button.setDisable(true);
+        quitar_button.setDisable(true);
     }
     private void enviarfac(){
 
