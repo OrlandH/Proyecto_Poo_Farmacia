@@ -84,16 +84,6 @@
                         <Font name="Franklin Gothic Book" size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="32.0" layoutY="61.0" text="ID:">
-                     <font>
-                        <Font name="Franklin Gothic Book" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="user_label" layoutX="126.0" layoutY="61.0" text="user_caj">
-                     <font>
-                        <Font name="Franklin Gothic Book" size="17.0" />
-                     </font>
-                  </Label>
                </children></Pane>
             <Label fx:id="num_label" layoutX="34.0" layoutY="98.0" text="N°Fac.">
                <font>

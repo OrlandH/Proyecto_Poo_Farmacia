@@ -20,8 +20,6 @@ public class fac_c_controlador {
     @FXML
     private Label nom_label;
     @FXML
-    private Label user_label;
-    @FXML
     private Label fecha_label;
     @FXML
     private Label nombre_emp_label;
