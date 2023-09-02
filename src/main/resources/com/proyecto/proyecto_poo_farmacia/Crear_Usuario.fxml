@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.Crear_Usuario_Controlador">
+   <children>
+      <TextField fx:id="id_user_register" layoutX="141.0" layoutY="100.0" />
+      <TextField fx:id="name_user_register" layoutX="141.0" layoutY="158.0" />
+      <TextField fx:id="pass_user_register" layoutX="141.0" layoutY="219.0" />
+      <ComboBox fx:id="conbo_user_tipo_register" layoutX="140.0" layoutY="278.0" prefWidth="150.0" />
+      <Label layoutX="149.0" layoutY="72.0" text="Ingrese el ID:" />
+      <Label layoutX="149.0" layoutY="133.0" text="Ingrese el Nombre:" />
+      <Label layoutX="149.0" layoutY="192.0" text="Ingrese la contraseña:" />
+      <Label layoutX="141.0" layoutY="253.0" text="Seleccione el tipo de Usuario:" />
+      <Label layoutX="139.0" layoutY="32.0" text="REGISTRO DE UN NUEVO USUARIO" />
+      <Button fx:id="button_registrar" layoutX="177.0" layoutY="335.0" mnemonicParsing="false" text="REGISTRAR" />
+   </children>
+</AnchorPane>

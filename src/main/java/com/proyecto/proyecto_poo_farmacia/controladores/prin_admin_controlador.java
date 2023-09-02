@@ -34,7 +34,17 @@ public class prin_admin_controlador {
 
     }
     private void crear_user(){
-
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Crear_Usuario.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        }catch (IOException ex){
+            ex.printStackTrace();
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) nuevouser_button.getScene().getWindow();
+        stage.setScene(scene);
     }
     private void his_ventas(){
 
