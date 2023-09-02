@@ -52,6 +52,8 @@ public class fac_c_controlador {
     private Button enviar_button;
     @FXML
     private Button salir_button;
+    @FXML
+    private Button cancelar_button;
 
     //Variables para la busqueda
     @FXML
@@ -84,7 +86,6 @@ public class fac_c_controlador {
     private TableColumn pvp_column;
     private ObservableList<Producto_class> listaProductos = FXCollections.observableArrayList();
 
-    private int contadorSpinner_Limite; //Este contador debe tener el limite de stock del producto. Validar con base de datos y cambiar por el 20 en SpinnerValueFactory
 
     //CONEXION SQL
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
@@ -114,9 +115,7 @@ public class fac_c_controlador {
 
 
         //Contador del Spinner
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 20);
-        valueFactory.setValue(1);
-        cantidad_box.setValueFactory(valueFactory);
+
 
         // Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
@@ -130,6 +129,7 @@ public class fac_c_controlador {
     }
 
     private void buscarcodigo(){
+        int contadorSpinner_Limite;
         int codigo = Integer.parseInt(cod_field.getText());
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
             String SQL_Query_select = "SELECT * FROM Productos WHERE ID = ?";
@@ -143,10 +143,16 @@ public class fac_c_controlador {
                                 String.valueOf(rs.getDouble("Precio")),
                                 String.valueOf(rs.getInt("Stock"))
                         );
-
                         listaProductos.add(producto);
-
+                        contadorSpinner_Limite = Integer.parseInt(producto.getStock());
+                        cod_field.setEditable(false);
+                        nombre_field.setEditable(false);
+                        buscar_nom_button.setDisable(true);
+                        clean_button.setDisable(false);
                         estado_bus_label.setText("Producto Encontrado");
+                        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, contadorSpinner_Limite);
+                        valueFactory.setValue(1);
+                        cantidad_box.setValueFactory(valueFactory);
                     } else {
                         estado_bus_label.setText("Producto No Encontrado");
                         cod_field.setText("");
@@ -158,14 +164,14 @@ public class fac_c_controlador {
         }
     }
     private void limpiar(){
-        num_fac_textfield.setText("");
-        nom_textfield.setText("");
-        idcli_textfield.setText("");
-        tel_textfield.setText("");
-        correo_textfield.setText("");
-        nom_textfield.setText("");
-        cod_field.setText("");
-        total_textfield.setText("");
+        nombre_field.clear();
+        cod_field.clear();
+        tabla_busqueda.getItems().clear();
+        cod_field.setEditable(true);
+        nombre_field.setEditable(true);
+        buscar_nom_button.setDisable(false);
+        buscar_cod_button.setDisable(false);
+        clean_button.setDisable(true);
     }
     private void agregarprod(){
 
@@ -179,7 +185,11 @@ public class fac_c_controlador {
     }
     //Funciones Factura
     private void activarfac(){
-
+        cantidad_box.setDisable(false);
+        cargar_button.setDisable(false);
+        quitar_button.setDisable(false);
+        crearfac_button.setDisable(true);
+        cancelar_button.setDisable(false);
     }
     private void enviarfac(){
 
