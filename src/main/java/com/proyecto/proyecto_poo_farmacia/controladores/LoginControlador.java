@@ -26,9 +26,12 @@ public class LoginControlador{
     private Button limpiar_button;
     @FXML
     private Label estado_label;
-    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
+    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     private static String USER = "root";
-    private static String PASS = "24@Diolove";
+    private static String PASS = "admin";
+    private prin_admin_controlador principalController;
+    private login_c_controlador ControllerCajero;
+
     //Principal
     @FXML
     private void initialize() {
@@ -55,19 +58,25 @@ public class LoginControlador{
                 statement.setString(1,inicio_sesion.getNombre());
                 statement.setString(2,inicio_sesion.getContrasena());
                 statement.setString(3,inicio_sesion.getTipo());
-            
+
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()){
                     estado_label.setText("Inicio de Sesion exitoso.");
+                    String nombreUsuario = resultSet.getString("Nombre");
+                    String nombreUsuarioCajero= resultSet.getString("Nombre");
                     if (inicio_sesion.getTipo().equals("Cajero")){
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml"));
                         Parent root;
 
                         try {
                             root = fxmlLoader.load();
+                            ControllerCajero = fxmlLoader.getController();
                         } catch (IOException e) {
                             e.printStackTrace();
                             return;
+                        }
+                        if (ControllerCajero != null) {
+                            ControllerCajero.setNombreUsuarioCajero(nombreUsuarioCajero);
                         }
                         // Cambiar la escena
                         Scene scene = new Scene(root);
@@ -79,10 +88,15 @@ public class LoginControlador{
 
                         try {
                             root = fxmlLoader.load();
+                            principalController = fxmlLoader.getController();
                         } catch (IOException e) {
                             e.printStackTrace();
                             return;
                         }
+                        if (principalController != null) {
+                            principalController.setNombreUsuario(nombreUsuario);
+                        }
+
                         // Cambiar la escena
                         Scene scene = new Scene(root);
                         Stage stage = (Stage) login_button.getScene().getWindow();

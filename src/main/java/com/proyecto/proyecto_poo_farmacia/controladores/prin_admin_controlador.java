@@ -30,6 +30,9 @@ public class prin_admin_controlador {
         revisar_button.setOnAction(event -> his_ventas());
         logout_button.setOnAction(event -> logout());
     }
+    public void setNombreUsuario(String nombreUsuario){
+        user_label.setText(nombreUsuario);
+    }
     private void ir_stock(){
 
     }

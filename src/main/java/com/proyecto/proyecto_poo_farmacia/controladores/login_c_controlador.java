@@ -17,11 +17,16 @@ public class login_c_controlador extends LoginControlador{
     private Button nueva_fac_button;
     @FXML
     private Button logout_button;
+    @FXML
+    private Label nombre_cajero_label;
     //Principal
     @FXML
     private void initialize() {
         nueva_fac_button.setOnAction(event -> cambiar_fac());
         logout_button.setOnAction(event -> logout());
+    }
+    public void setNombreUsuarioCajero(String nombreUsuarioCajero){
+        nombre_cajero_label.setText(nombreUsuarioCajero);
     }
     //Funciones
     private void cambiar_fac(){
