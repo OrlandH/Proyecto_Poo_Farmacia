@@ -59,7 +59,7 @@
               <columns>
                 <TableColumn fx:id="columna_nombre" prefWidth="273.0" text="Producto" />
                   <TableColumn fx:id="stock_column" minWidth="0.0" prefWidth="66.0" text="Stock" />
-                  <TableColumn fx:id="pvp_column" prefWidth="58.0" text="P.V.P" />
+                  <TableColumn fx:id="pvp_column" prefWidth="58.0" text="PVP" />
               </columns>
             </TableView>
             <Button fx:id="selec_button" disable="true" layoutX="134.0" layoutY="300.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="157.0" text="Seleccionar" />
