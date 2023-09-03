@@ -6,9 +6,9 @@ public class ItemFactura {
     private String PVP;
     private String Stock;
     private int cantidad;
-    private double subtotal;
+    private String subtotal;
 
-    public ItemFactura(String ID, String Producto, String PVP, String Stock, int cantidad, double subtotal) {
+    public ItemFactura(String ID, String Producto, String PVP, String Stock, int cantidad, String subtotal) {
         this.ID = ID;
         this.Productos = Producto;
         this.PVP = PVP;
@@ -57,11 +57,11 @@ public class ItemFactura {
         this.cantidad = cantidad;
     }
 
-    public double getSubtotal() {
+    public String getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
+    public void setSubtotal(String subtotal) {
         this.subtotal = subtotal;
     }
 }
