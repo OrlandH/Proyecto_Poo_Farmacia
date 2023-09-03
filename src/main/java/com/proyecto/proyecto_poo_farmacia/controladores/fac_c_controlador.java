@@ -1,6 +1,6 @@
 package com.proyecto.proyecto_poo_farmacia.controladores;
 
-import com.proyecto.proyecto_poo_farmacia.controladores.POO.Producto_class;
+import com.proyecto.proyecto_poo_farmacia.controladores.POO.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.sql.*;
@@ -63,8 +64,6 @@ public class fac_c_controlador {
     @FXML
     private Button cargar_button;
     @FXML
-    private Button selec_button;
-    @FXML
     private Button quitar_button;
     @FXML
     private Spinner<Integer> cantidad_box;
@@ -83,6 +82,19 @@ public class fac_c_controlador {
     @FXML
     private TableColumn pvp_column;
     private ObservableList<Producto_class> listaProductos = FXCollections.observableArrayList();
+    //Tabla Factura
+    @FXML
+    private TableView tabla_fac;
+    @FXML
+    private TableColumn codprod_column;
+    @FXML
+    private TableColumn product_column_fac;
+    @FXML
+    private TableColumn cantidad_column;
+    @FXML
+    private TableColumn pvp_column_fact;
+    @FXML
+    private TableColumn subtotal_column;
 
 
     //CONEXION SQL
@@ -99,21 +111,48 @@ public class fac_c_controlador {
         pvp_column.setCellValueFactory(new PropertyValueFactory<>("PVP"));
         stock_column.setCellValueFactory(new PropertyValueFactory<>("Stock"));
 
+        codprod_column.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        product_column_fac.setCellValueFactory(new  PropertyValueFactory<>("Productos"));
+        cantidad_column.setCellValueFactory(new  PropertyValueFactory<>("Cantidad"));
+        pvp_column_fact.setCellValueFactory(new  PropertyValueFactory<>("PVP"));
+        subtotal_column.setCellValueFactory(new  PropertyValueFactory<>("subtotal"));
+
         //Link de Botones con metodos
         buscar_nom_button.setOnAction(event -> buscarnombre());
         buscar_cod_button.setOnAction(event -> buscarcodigo());
         clean_button.setOnAction(event -> limpiar());
         crearfac_button.setOnAction(event -> activarfac());
         cargar_button.setOnAction(event -> agregarprod());
-        selec_button.setOnAction(event -> seleccionaritem());
         quitar_button.setOnAction(event -> eliminarprod());
         enviar_button.setOnAction(event -> enviarfac());
         salir_button.setOnAction(event -> regresar());
         cancelar_button.setOnAction(event -> cancelarfac());
 
 
-        //Contador del Spinner
-
+        //Contador del Spinner y deteccion de click en tabla
+        tabla_busqueda.setOnMouseClicked(event -> {
+            if (crearfac_button.isDisabled()) {
+                cantidad_box.setDisable(false);
+                cargar_button.setDisable(false);
+            }
+            Producto_class productoSeleccionado = (Producto_class) tabla_busqueda.getSelectionModel().getSelectedItem();
+            if (productoSeleccionado != null) {
+                if (crearfac_button.isDisabled()) {
+                    cargar_button.setDisable(false);
+                    cantidad_box.setDisable(false);
+                }
+                int contadorSpinner_Limite = Integer.parseInt(productoSeleccionado.getStock());
+                SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, contadorSpinner_Limite);
+                valueFactory.setValue(1);
+                cantidad_box.setValueFactory(valueFactory);
+            }
+            else {
+                if (crearfac_button.isDisabled()) {
+                    cargar_button.setDisable(true);
+                    cantidad_box.setDisable(true);
+                }
+            }
+        });
 
         // Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
@@ -122,13 +161,44 @@ public class fac_c_controlador {
         fecha_label.setText(fechaFormateada);
     }
     //Funciones busqueda
-    private void buscarnombre(){
-
+    private void buscarnombre() {
+        String nombre_aux = nombre_field.getText();
+        listaProductos.clear();
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+            String SQL_Query_select = "SELECT * FROM Productos WHERE Nombre LIKE ?";
+            try (PreparedStatement pstm = conn.prepareStatement(SQL_Query_select)) {
+                pstm.setString(1, "%" + nombre_aux + "%");
+                try (ResultSet rs = pstm.executeQuery()) {
+                    while (rs.next()) {
+                        Producto_class producto = new Producto_class(
+                                String.valueOf(rs.getInt("ID")),
+                                rs.getString("Nombre"),
+                                String.valueOf(rs.getDouble("Precio")),
+                                String.valueOf(rs.getInt("Stock"))
+                        );
+                        listaProductos.add(producto);
+                        cod_field.setEditable(false);
+                        nombre_field.setEditable(false);
+                        buscar_cod_button.setDisable(true);
+                        buscar_nom_button.setDisable(true);
+                        clean_button.setDisable(false);
+                    }
+                    if (!listaProductos.isEmpty()) {
+                        tabla_busqueda.setItems(FXCollections.observableArrayList(listaProductos));
+                    } else {
+                        estado_bus_label.setText("Producto No Encontrado");
+                        nombre_field.clear();
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void buscarcodigo(){
-        int contadorSpinner_Limite;
         int codigo = Integer.parseInt(cod_field.getText());
+        listaProductos.clear();
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
             String SQL_Query_select = "SELECT * FROM Productos WHERE ID = ?";
             try (PreparedStatement pstm = conn.prepareStatement(SQL_Query_select)) {
@@ -142,23 +212,18 @@ public class fac_c_controlador {
                                 String.valueOf(rs.getInt("Stock"))
                         );
                         listaProductos.add(producto);
-                        contadorSpinner_Limite = Integer.parseInt(producto.getStock());
                         cod_field.setEditable(false);
                         nombre_field.setEditable(false);
+                        buscar_cod_button.setDisable(true);
                         buscar_nom_button.setDisable(true);
                         clean_button.setDisable(false);
-                        if (crearfac_button.isDisabled()){
-                            cantidad_box.setDisable(false);
-                            cargar_button.setDisable(false);
-                            quitar_button.setDisable(false);
-                        }
                         estado_bus_label.setText("Producto Encontrado");
-                        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, contadorSpinner_Limite);
-                        valueFactory.setValue(1);
-                        cantidad_box.setValueFactory(valueFactory);
+                        if (!listaProductos.isEmpty()) {
+                            tabla_busqueda.setItems(FXCollections.observableArrayList(listaProductos));
+                        }
                     } else {
                         estado_bus_label.setText("Producto No Encontrado");
-                        cod_field.setText("");
+                        cod_field.clear();
                     }
                 }
             }
@@ -166,9 +231,10 @@ public class fac_c_controlador {
             ex.printStackTrace();
         }
     }
-    private void limpiar(){
+    private void limpiar() {
         nombre_field.clear();
         cod_field.clear();
+        listaProductos.clear();
         tabla_busqueda.getItems().clear();
         cod_field.setEditable(true);
         nombre_field.setEditable(true);
@@ -177,33 +243,56 @@ public class fac_c_controlador {
         buscar_cod_button.setDisable(false);
         clean_button.setDisable(true);
         cantidad_box.setDisable(true);
-        cargar_button.setDisable(true);
         quitar_button.setDisable(true);
+        cargar_button.setDisable(true);
     }
-    private void agregarprod(){
+    private void agregarprod() {
+        Producto_class productoSeleccionado = (Producto_class) tabla_busqueda.getSelectionModel().getSelectedItem();
+        if (productoSeleccionado != null) {
+            String idProducto = productoSeleccionado.getID();
+            String nombreProducto = productoSeleccionado.getProducto();
+            int cantidad = cantidad_box.getValue();
+            double pvp = Double.parseDouble(productoSeleccionado.getPVP());
+            double subtotal = cantidad * pvp;
+
+            ItemFactura itemFactura = new ItemFactura(idProducto, nombreProducto, productoSeleccionado.getPVP(), productoSeleccionado.getStock(), cantidad, subtotal);
 
 
+            tabla_fac.getItems().add(itemFactura);
+            System.out.println(idProducto+ " " + nombreProducto + " " + cantidad + " " + subtotal);
+            cantidad_box.getValueFactory().setValue(1);
+            cod_field.clear();
+            nombre_field.clear();
+            estado_bus_label.setText("Producto Registrado con Exito");
+            buscar_cod_button.setDisable(false);
+            buscar_nom_button.setDisable(false);
+
+
+
+        }
     }
     private void eliminarprod(){
 
     }
-    private void seleccionaritem(){
 
-    }
     //Funciones Factura
     private void activarfac(){
-        cantidad_box.setDisable(false);
-        cargar_button.setDisable(false);
-        quitar_button.setDisable(false);
         crearfac_button.setDisable(true);
         cancelar_button.setDisable(false);
+        num_fac_textfield.setDisable(false);
+        nom_textfield.setDisable(false);
+        idcli_textfield.setDisable(false);
+        tel_textfield.setDisable(false);
+        correo_textfield.setDisable(false);
     }
     private void cancelarfac(){
         crearfac_button.setDisable(false);
         cancelar_button.setDisable(true);
-        cantidad_box.setDisable(true);
-        cargar_button.setDisable(true);
-        quitar_button.setDisable(true);
+        num_fac_textfield.setDisable(true);
+        nom_textfield.setDisable(true);
+        idcli_textfield.setDisable(true);
+        tel_textfield.setDisable(true);
+        correo_textfield.setDisable(true);
     }
     private void enviarfac(){
 

@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Activar y desactivar funcionalidad en factura y busqueda">
+    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Me olvide de algo jsjsjs Ahora si">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/POO/ItemFactura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Fac_Cajero.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Fac_Cajero.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +171,23 @@
       <option name="project" value="LOCAL" />
       <updated>1693697550975</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Activar y desactivar funcionalidad en factura y busqueda p2">
+      <option name="closed" value="true" />
+      <created>1693698204654</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693698204654</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Me olvide de algo jsjsjs Ahora si">
+      <option name="closed" value="true" />
+      <created>1693698280928</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1693698280928</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +199,9 @@
     <MESSAGE value="Dibujo Factura y etiquetas" />
     <MESSAGE value="Mini ajustes" />
     <MESSAGE value="Activar y desactivar funcionalidad en factura y busqueda" />
-    <option name="LAST_COMMIT_MESSAGE" value="Activar y desactivar funcionalidad en factura y busqueda" />
+    <MESSAGE value="Activar y desactivar funcionalidad en factura y busqueda p2" />
+    <MESSAGE value="Me olvide de algo jsjsjs Ahora si" />
+    <option name="LAST_COMMIT_MESSAGE" value="Me olvide de algo jsjsjs Ahora si" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

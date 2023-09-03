@@ -62,7 +62,6 @@
                   <TableColumn fx:id="pvp_column" prefWidth="58.0" text="PVP" />
               </columns>
             </TableView>
-            <Button fx:id="selec_button" disable="true" layoutX="134.0" layoutY="300.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="157.0" text="Seleccionar" />
             <Label fx:id="estado_bus_label" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="-8.0" prefHeight="16.0" prefWidth="398.0" text="Estado Busqueda" textAlignment="CENTER">
                <font>
                   <Font name="Franklin Gothic Book" size="14.0" />
@@ -129,7 +128,7 @@
                 <TableColumn fx:id="codprod_column" prefWidth="75.0" text="CODPROD" />
                 <TableColumn fx:id="product_column_fac" prefWidth="408.0" text="Producto" />
                   <TableColumn fx:id="cantidad_column" prefWidth="70.0" text="Cantidad" />
-                  <TableColumn fx:id="pvp_column_fact" prefWidth="73.0" text="P.V.P" />
+                  <TableColumn fx:id="pvp_column_fact" prefWidth="73.0" text="PVP" />
                   <TableColumn fx:id="subtotal_column" prefWidth="73.0" text="Subtotal" />
               </columns>
             </TableView>
