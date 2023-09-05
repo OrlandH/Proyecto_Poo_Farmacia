@@ -91,6 +91,8 @@ public class fac_c_controlador {
     @FXML
     private TableColumn subtotal_column;
     //CONEXION SQL
+    //Aux
+    private double total=0.0;
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     static final String USER = "root";
     static final String PASS = "root_bas3";
@@ -253,10 +255,13 @@ public class fac_c_controlador {
             int cantidad = cantidad_box.getValue();
             double pvp = Double.parseDouble(productoSeleccionado.getPVP());
             double subtotal = cantidad * pvp;
+            total = total + subtotal;
             DecimalFormat decimalFormat = new DecimalFormat("#.00");
+            String totalFormateado = decimalFormat.format(total);
             String subtotalFormateado = decimalFormat.format(subtotal);
             ItemFactura itemFactura = new ItemFactura(idProducto, nombreProducto, productoSeleccionado.getPVP(), productoSeleccionado.getStock(), cantidad, subtotalFormateado);
             tabla_fac.getItems().add(itemFactura);
+            total_textfield.setText(totalFormateado);
             cantidad_box.getValueFactory().setValue(1);
             cod_field.clear();
             nombre_field.clear();
@@ -268,7 +273,14 @@ public class fac_c_controlador {
     private void eliminarprod() {
         Object itemSeleccionado = tabla_fac.getSelectionModel().getSelectedItem();
         if (itemSeleccionado != null) {
+            String subtotalstring = (String) subtotal_column.getCellData(itemSeleccionado);
+            subtotalstring = subtotalstring.replace(",", ".");
+            double subtotal = Double.parseDouble(subtotalstring);
+            total = total - subtotal;
             quitar_button.setDisable(true);
+            DecimalFormat decimalFormat = new DecimalFormat("#.00");
+            String totalFormateado = decimalFormat.format(total);
+            total_textfield.setText(totalFormateado);
             tabla_fac.getItems().remove(itemSeleccionado);
         }
         else{
