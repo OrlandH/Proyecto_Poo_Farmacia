@@ -93,7 +93,7 @@ public class fac_c_controlador {
     //CONEXION SQL
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     static final String USER = "root";
-    static final String PASS = "24@Diolove";
+    static final String PASS = "root_bas3";
     //Principal
     @FXML
     public void initialize() {

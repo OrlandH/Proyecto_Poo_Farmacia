@@ -14,6 +14,7 @@
       <Label layoutX="149.0" layoutY="192.0" text="Ingrese la contraseña:" />
       <Label layoutX="141.0" layoutY="253.0" text="Seleccione el tipo de Usuario:" />
       <Label layoutX="139.0" layoutY="32.0" text="REGISTRO DE UN NUEVO USUARIO" />
-      <Button fx:id="button_registrar" layoutX="177.0" layoutY="335.0" mnemonicParsing="false" text="REGISTRAR" />
+      <Button fx:id="button_registrar" layoutX="117.0" layoutY="335.0" mnemonicParsing="false" text="REGISTRAR" />
+      <Button fx:id="leave_main" layoutX="271.0" layoutY="335.0" mnemonicParsing="false" text="SALIR" />
    </children>
 </AnchorPane>

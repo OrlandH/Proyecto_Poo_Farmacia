@@ -28,7 +28,7 @@ public class LoginControlador{
     private Label estado_label;
     private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     private static String USER = "root";
-    private static String PASS = "24@Diolove";
+    private static String PASS = "root_bas3";
     private prin_admin_controlador principalController;
     private login_c_controlador ControllerCajero;
 

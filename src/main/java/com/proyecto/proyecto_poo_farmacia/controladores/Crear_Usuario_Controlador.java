@@ -3,11 +3,16 @@ package com.proyecto.proyecto_poo_farmacia.controladores;
 import com.proyecto.proyecto_poo_farmacia.controladores.POO.Crear_Usuario;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,14 +28,32 @@ public class Crear_Usuario_Controlador {
     private ComboBox <String> conbo_user_tipo_register;
     @FXML
     private Button button_registrar;
-    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA";
+    @FXML
+    private Button leave_main;
+    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     private static String USER = "root";
-    private static String PASS = "admin";
+    private static String PASS = "root_bas3";
 
     @FXML
     private void initialize(){
         conbo_user_tipo_register.setItems(FXCollections.observableArrayList("Administrador","Cajero"));
         button_registrar.setOnAction(actionEvent -> Registrar());
+        leave_main.setOnAction(actionEvent -> Salir_Login());
+    }
+
+    private void Salir_Login() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        // Cambiar la escena
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) leave_main.getScene().getWindow();
+        stage.setScene(scene);
     }
 
     private void Registrar (){
