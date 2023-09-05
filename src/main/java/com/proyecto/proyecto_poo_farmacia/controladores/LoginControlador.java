@@ -24,8 +24,7 @@ public class LoginControlador{
     private Button login_button;
     @FXML
     private Button limpiar_button;
-    @FXML
-    private Label estado_label;
+
     private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     private static String USER = "root";
     private static String PASS = "root_bas3";
@@ -39,6 +38,20 @@ public class LoginControlador{
         login_button.setOnAction(event -> login_validar());
         limpiar_button.setOnAction(event -> limpiarcampos());
     }
+    private void mostrarMensajeError(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    private void mostrarMensajeExito(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Éxito");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
     //Funciones
     private void login_validar(){
         //Cambiar el FXML
@@ -48,7 +61,7 @@ public class LoginControlador{
         inicio_sesion.setTipo(rol_field.getValue());
 
         if (inicio_sesion.getNombre().isEmpty() || inicio_sesion.getContrasena().isEmpty() || inicio_sesion.getTipo() == null) {
-            estado_label.setText("Por favor, complete todos los campos.");
+            mostrarMensajeError("Por favor, complete todos los campos.");
             return;
         }
 
@@ -61,7 +74,7 @@ public class LoginControlador{
 
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()){
-                    estado_label.setText("Inicio de Sesion exitoso.");
+                    mostrarMensajeExito("Inicio de Sesion exitoso.");
                     String nombreUsuario = resultSet.getString("Nombre");
                     String nombreUsuarioCajero= resultSet.getString("Nombre");
                     if (inicio_sesion.getTipo().equals("Cajero")){
@@ -103,11 +116,11 @@ public class LoginControlador{
                         stage.setScene(scene);
                     }
                 } else {
-                    estado_label.setText("Credenciales Incorrectas ! Ingrese nuevamente los datos");
+                    mostrarMensajeError("Credenciales Incorrectas ! Ingrese nuevamente los datos");
                 }
         }catch (Exception e){
             e.printStackTrace();
-            estado_label.setText("Ocurrió un error al intentar iniciar sesión.");
+            mostrarMensajeError("Ocurrió un error al intentar iniciar sesión.");
         }
 
     }

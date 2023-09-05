@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Mini ajustes">
+    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Total Completo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/proyecto/proyecto_poo_farmacia/Login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693493847612</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Total Completo">
+      <option name="closed" value="true" />
+      <created>1693924974309</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693924974309</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +181,8 @@
     <MESSAGE value="Union Busqueda/Factura y creacion de busqueda" />
     <MESSAGE value="Dibujo Factura y etiquetas" />
     <MESSAGE value="Mini ajustes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mini ajustes" />
+    <MESSAGE value="Total Completo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Total Completo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -42,10 +42,6 @@
             <Font name="JetBrains Mono Light" size="12.0" />
          </font></PasswordField>
       <ComboBox fx:id="rol_field" layoutX="253.0" layoutY="272.0" onAction="#initialize" prefWidth="150.0" />
-      <Label fx:id="estado_label" alignment="CENTER" contentDisplay="CENTER" layoutX="231.0" layoutY="322.0" textFill="#611d1d">
-         <font>
-            <Font name="JetBrains Mono ExtraBold" size="15.0" />
-         </font></Label>
       <Button fx:id="login_button" layoutX="95.0" layoutY="366.0" mnemonicParsing="false" onAction="#initialize" prefHeight="42.0" prefWidth="90.0" text="Ingresar">
          <font>
             <Font name="Franklin Gothic Book Italic" size="13.0" />
