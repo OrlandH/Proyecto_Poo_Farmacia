@@ -24,10 +24,11 @@ public class LoginControlador{
     private Button login_button;
     @FXML
     private Button limpiar_button;
-
+    @FXML
+    private Label estado_label;
     private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     private static String USER = "root";
-    private static String PASS = "root_bas3";
+    private static String PASS = "Skarabus6";
     private prin_admin_controlador principalController;
     private login_c_controlador ControllerCajero;
 
@@ -38,20 +39,6 @@ public class LoginControlador{
         login_button.setOnAction(event -> login_validar());
         limpiar_button.setOnAction(event -> limpiarcampos());
     }
-    private void mostrarMensajeError(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-    private void mostrarMensajeExito(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Éxito");
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
     //Funciones
     private void login_validar(){
         //Cambiar el FXML
@@ -59,9 +46,10 @@ public class LoginControlador{
         inicio_sesion.setNombre(user_field.getText());
         inicio_sesion.setContrasena(pass_field.getText());
         inicio_sesion.setTipo(rol_field.getValue());
+        estado_label = new Label();
 
         if (inicio_sesion.getNombre().isEmpty() || inicio_sesion.getContrasena().isEmpty() || inicio_sesion.getTipo() == null) {
-            mostrarMensajeError("Por favor, complete todos los campos.");
+            estado_label.setText("Por favor, complete todos los campos.");
             return;
         }
 
@@ -74,7 +62,7 @@ public class LoginControlador{
 
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()){
-                    mostrarMensajeExito("Inicio de Sesion exitoso.");
+                    estado_label.setText("Inicio de Sesion exitoso.");
                     String nombreUsuario = resultSet.getString("Nombre");
                     String nombreUsuarioCajero= resultSet.getString("Nombre");
                     if (inicio_sesion.getTipo().equals("Cajero")){
@@ -84,6 +72,7 @@ public class LoginControlador{
                         try {
                             root = fxmlLoader.load();
                             ControllerCajero = fxmlLoader.getController();
+                            ControllerCajero.setNombreUsuarioCajero(nombreUsuarioCajero);
                         } catch (IOException e) {
                             e.printStackTrace();
                             return;
@@ -91,6 +80,7 @@ public class LoginControlador{
                         if (ControllerCajero != null) {
                             ControllerCajero.setNombreUsuarioCajero(nombreUsuarioCajero);
                         }
+
                         // Cambiar la escena
                         Scene scene = new Scene(root);
                         Stage stage = (Stage) login_button.getScene().getWindow();
@@ -116,14 +106,15 @@ public class LoginControlador{
                         stage.setScene(scene);
                     }
                 } else {
-                    mostrarMensajeError("Credenciales Incorrectas ! Ingrese nuevamente los datos");
+                    estado_label.setText("Credenciales Incorrectas ! Ingrese nuevamente los datos");
                 }
         }catch (Exception e){
             e.printStackTrace();
-            mostrarMensajeError("Ocurrió un error al intentar iniciar sesión.");
+            estado_label.setText("Ocurrió un error al intentar iniciar sesión.");
         }
 
     }
+
     private void limpiarcampos(){
         user_field.setText("");
         pass_field.setText("");

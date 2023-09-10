@@ -32,29 +32,15 @@ public class Crear_Usuario_Controlador {
     private Button leave_main;
     private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     private static String USER = "root";
-    private static String PASS = "root_bas3";
+    private static String PASS = "Skarabus6";
 
     @FXML
     private void initialize(){
         conbo_user_tipo_register.setItems(FXCollections.observableArrayList("Administrador","Cajero"));
         button_registrar.setOnAction(actionEvent -> Registrar());
-        leave_main.setOnAction(actionEvent -> Salir_Login());
+        leave_main.setOnAction(actionEvent -> Salir());
     }
 
-    private void Salir_Login() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
-        Parent root;
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        // Cambiar la escena
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) leave_main.getScene().getWindow();
-        stage.setScene(scene);
-    }
 
     private void Registrar (){
         Crear_Usuario user_register = new Crear_Usuario(0,"","","");
@@ -92,5 +78,21 @@ public class Crear_Usuario_Controlador {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void Salir() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        // Cambiar la escena
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) leave_main.getScene().getWindow();
+        stage.setScene(scene);
+
     }
 }

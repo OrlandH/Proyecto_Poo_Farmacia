@@ -10,12 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.sql.*;
-public class fac_c_controlador {
+public class fac_c_controlador extends LoginControlador{
     //Cabecera variables
     @FXML
     private Label nom_label;
@@ -29,6 +30,8 @@ public class fac_c_controlador {
     private Label dir_emp_label;
     @FXML
     private Label estado_bus_label;
+
+
     //Factura general variables
     @FXML
     private TextField num_fac_textfield;
@@ -50,6 +53,7 @@ public class fac_c_controlador {
     private Button salir_button;
     @FXML
     private Button cancelar_button;
+
     //Variables para la busqueda
     @FXML
     private Button buscar_nom_button;
@@ -67,6 +71,7 @@ public class fac_c_controlador {
     private TextField nombre_field;
     @FXML
     private TextField cod_field;
+
     //Tablas Producto Busqueda
     @FXML
     private TableView tabla_busqueda;
@@ -90,12 +95,12 @@ public class fac_c_controlador {
     private TableColumn pvp_column_fact;
     @FXML
     private TableColumn subtotal_column;
+
     //CONEXION SQL
-    //Aux
-    private double total=0.0;
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
     static final String USER = "root";
-    static final String PASS = "root_bas3";
+    static final String PASS = "Skarabus6";
+
     //Principal
     @FXML
     public void initialize() {
@@ -103,11 +108,13 @@ public class fac_c_controlador {
         columna_nombre.setCellValueFactory(new PropertyValueFactory<>("Producto"));
         pvp_column.setCellValueFactory(new PropertyValueFactory<>("PVP"));
         stock_column.setCellValueFactory(new PropertyValueFactory<>("Stock"));
+
         codprod_column.setCellValueFactory(new PropertyValueFactory<>("ID"));
         product_column_fac.setCellValueFactory(new  PropertyValueFactory<>("Productos"));
         cantidad_column.setCellValueFactory(new  PropertyValueFactory<>("Cantidad"));
         pvp_column_fact.setCellValueFactory(new  PropertyValueFactory<>("PVP"));
         subtotal_column.setCellValueFactory(new  PropertyValueFactory<>("subtotal"));
+
         //Link de Botones con metodos
         buscar_nom_button.setOnAction(event -> buscarnombre());
         buscar_cod_button.setOnAction(event -> buscarcodigo());
@@ -118,6 +125,8 @@ public class fac_c_controlador {
         enviar_button.setOnAction(event -> enviarfac());
         salir_button.setOnAction(event -> regresar());
         cancelar_button.setOnAction(event -> cancelarfac());
+
+
         //Contador del Spinner y deteccion de click en tabla
         tabla_busqueda.setOnMouseClicked(event -> {
             if (crearfac_button.isDisabled()) {
@@ -142,24 +151,21 @@ public class fac_c_controlador {
                 }
             }
         });
-        tabla_fac.setOnMouseClicked(event -> {
-            if (crearfac_button.isDisabled()){
-                quitar_button.setDisable(false);
-            }
-        });
+
         // Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fechaFormateada = fechaActual.format(formatter);
         fecha_label.setText(fechaFormateada);
     }
+
+    public void setNomLabel(String text) {
+        nom_label.setText(text);
+    }
+
     //Funciones busqueda
     private void buscarnombre() {
-        String nombre_aux = nombre_field.getText().trim();
-        if (nombre_aux.isEmpty()) {
-            estado_bus_label.setText("Ingresa algo en el campo");
-            return;
-        }
+        String nombre_aux = nombre_field.getText();
         listaProductos.clear();
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
             String SQL_Query_select = "SELECT * FROM Productos WHERE Nombre LIKE ?";
@@ -192,12 +198,8 @@ public class fac_c_controlador {
             ex.printStackTrace();
         }
     }
+
     private void buscarcodigo(){
-        String codigo_aux = cod_field.getText().trim();
-        if (codigo_aux.isEmpty()) {
-            estado_bus_label.setText("Ingresa algo en el campo");
-            return;
-        }
         int codigo = Integer.parseInt(cod_field.getText());
         listaProductos.clear();
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
@@ -255,38 +257,27 @@ public class fac_c_controlador {
             int cantidad = cantidad_box.getValue();
             double pvp = Double.parseDouble(productoSeleccionado.getPVP());
             double subtotal = cantidad * pvp;
-            total = total + subtotal;
-            DecimalFormat decimalFormat = new DecimalFormat("#.00");
-            String totalFormateado = decimalFormat.format(total);
-            String subtotalFormateado = decimalFormat.format(subtotal);
-            ItemFactura itemFactura = new ItemFactura(idProducto, nombreProducto, productoSeleccionado.getPVP(), productoSeleccionado.getStock(), cantidad, subtotalFormateado);
+
+            ItemFactura itemFactura = new ItemFactura(idProducto, nombreProducto, productoSeleccionado.getPVP(), productoSeleccionado.getStock(), cantidad, subtotal);
+
+
             tabla_fac.getItems().add(itemFactura);
-            total_textfield.setText(totalFormateado);
+            System.out.println(idProducto+ " " + nombreProducto + " " + cantidad + " " + subtotal);
             cantidad_box.getValueFactory().setValue(1);
             cod_field.clear();
             nombre_field.clear();
             estado_bus_label.setText("Producto Registrado con Exito");
             buscar_cod_button.setDisable(false);
             buscar_nom_button.setDisable(false);
+
+
+
         }
     }
-    private void eliminarprod() {
-        Object itemSeleccionado = tabla_fac.getSelectionModel().getSelectedItem();
-        if (itemSeleccionado != null) {
-            String subtotalstring = (String) subtotal_column.getCellData(itemSeleccionado);
-            subtotalstring = subtotalstring.replace(",", ".");
-            double subtotal = Double.parseDouble(subtotalstring);
-            total = total - subtotal;
-            quitar_button.setDisable(true);
-            DecimalFormat decimalFormat = new DecimalFormat("#.00");
-            String totalFormateado = decimalFormat.format(total);
-            total_textfield.setText(totalFormateado);
-            tabla_fac.getItems().remove(itemSeleccionado);
-        }
-        else{
-            quitar_button.setDisable(true);
-        }
+    private void eliminarprod(){
+
     }
+
     //Funciones Factura
     private void activarfac(){
         crearfac_button.setDisable(true);
@@ -296,10 +287,8 @@ public class fac_c_controlador {
         idcli_textfield.setDisable(false);
         tel_textfield.setDisable(false);
         correo_textfield.setDisable(false);
-        total_textfield.setDisable(false);
     }
     private void cancelarfac(){
-        tabla_fac.getItems().clear();
         crearfac_button.setDisable(false);
         cancelar_button.setDisable(true);
         num_fac_textfield.setDisable(true);
@@ -307,11 +296,12 @@ public class fac_c_controlador {
         idcli_textfield.setDisable(true);
         tel_textfield.setDisable(true);
         correo_textfield.setDisable(true);
-        total_textfield.setDisable(true);
     }
     private void enviarfac(){
+
     }
     private void regresar(){
+        //Cambiar el FXML
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
         Parent root;
         try {
@@ -320,8 +310,10 @@ public class fac_c_controlador {
             e.printStackTrace();
             return;
         }
+        // Cambiar la escena
         Scene scene = new Scene(root);
         Stage stage = (Stage) salir_button.getScene().getWindow();
         stage.setScene(scene);
     }
+
 }

@@ -28,6 +28,7 @@ public class login_c_controlador extends LoginControlador{
     public void setNombreUsuarioCajero(String nombreUsuarioCajero){
         nombre_cajero_label.setText(nombreUsuarioCajero);
     }
+
     //Funciones
     private void cambiar_fac(){
         //Cambiar el FXML
@@ -39,6 +40,11 @@ public class login_c_controlador extends LoginControlador{
             e.printStackTrace();
             return;
         }
+
+        fac_c_controlador facController = fxmlLoader.getController();
+        String nombreCajero = getNombreCajeroLabel();
+        facController.setNomLabel(nombreCajero);
+
         // Cambiar la escena
         Scene scene = new Scene(root);
         Stage stage = (Stage) nueva_fac_button.getScene().getWindow();
@@ -59,6 +65,9 @@ public class login_c_controlador extends LoginControlador{
         Stage stage = (Stage) logout_button.getScene().getWindow();
         stage.setScene(scene);
 
+    }
+    public String getNombreCajeroLabel() {
+        return nombre_cajero_label.getText();
     }
 
 }
