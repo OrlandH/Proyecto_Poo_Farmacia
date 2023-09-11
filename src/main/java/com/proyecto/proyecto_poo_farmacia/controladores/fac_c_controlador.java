@@ -101,7 +101,7 @@ public class fac_c_controlador extends LoginControlador{
     //CONEXION SQL
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     static final String USER = "root";
-    static final String PASS = "24_Diolove";
+    static final String PASS = "admin";
 
     //Principal
     @FXML
@@ -319,6 +319,7 @@ public class fac_c_controlador extends LoginControlador{
         tel_textfield.setDisable(false);
         correo_textfield.setDisable(false);
         total_textfield.setDisable(false);
+        enviar_button.setDisable(false);
     }
     private void cancelarfac(){
         tabla_fac.getItems().clear();
@@ -331,9 +332,73 @@ public class fac_c_controlador extends LoginControlador{
         correo_textfield.setDisable(true);
         total_textfield.setDisable(true);
     }
-    private void enviarfac(){
+    private void enviarfac() {
+        String numeroFactura = num_fac_textfield.getText();
+        String nombreCliente = nom_textfield.getText();
+        String idCliente = idcli_textfield.getText();
+        String telefonoCliente = tel_textfield.getText();
+        String correoCliente = correo_textfield.getText();
+        String totalVentaString = total_textfield.getText();
 
+        totalVentaString = totalVentaString.replace(",", ".");
+
+        double totalVenta = Double.parseDouble(totalVentaString);
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement getCajeroStatement = connection.prepareStatement(
+                     "SELECT ID FROM Usuarios WHERE Nombre = ?");
+             PreparedStatement statement = connection.prepareStatement(
+                     "INSERT INTO Ventas (ID_Cajero, Fecha) VALUES (?, ?)",
+                     Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement detalleventaStatement = connection.prepareStatement(
+                     "INSERT INTO DetalleVenta (ID_Venta, ID_Producto, Cantidad, PVP, Subtotal) VALUES (?, ?, ?, ?, ?)")) {
+
+            // Obtener el ID del cajero
+            getCajeroStatement.setString(1, nom_label.getText()); // Asumo que el nombre del cajero está en el label nom_label
+            ResultSet cajeroResult = getCajeroStatement.executeQuery();
+            int idCajero = -1;
+            if (cajeroResult.next()) {
+                idCajero = cajeroResult.getInt("ID");
+            } else {
+                throw new SQLException("No se encontró el ID del cajero.");
+            }
+
+            // Obtener la fecha actual
+            LocalDate fechaActual = LocalDate.now();
+
+            // Insertar la venta principal
+            statement.setInt(1, 1); // Usamos el ID del cajero obtenido
+            statement.setDate(2, Date.valueOf(fechaActual));
+            statement.executeUpdate();
+
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            int ventaID = -1;
+            if (generatedKeys.next()) {
+                ventaID = generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("La inserción en Ventas no devolvió un ID de venta generado.");
+            }
+
+            // Insertar detalles de la venta desde la tabla de la factura
+            for (Object itemFactura : tabla_fac.getItems()) {
+                ItemFactura factura = (ItemFactura) itemFactura;
+                detalleventaStatement.setInt(1, ventaID);
+                detalleventaStatement.setInt(2, Integer.parseInt(factura.getID()));
+                detalleventaStatement.setInt(3, factura.getCantidad());
+                detalleventaStatement.setDouble(4, Double.parseDouble(factura.getPVP()));
+                detalleventaStatement.setDouble(5, Double.parseDouble(factura.getSubtotal().replace(",", "."))); // Corregir el formato del subtotal
+
+                String subtotalFormatted = factura.getSubtotal().replace(",", ".");
+                detalleventaStatement.setDouble(5, Double.parseDouble(subtotalFormatted));
+
+                detalleventaStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+
     private void regresar(){
         //Cambiar el FXML
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
