@@ -95,11 +95,13 @@ public class fac_c_controlador extends LoginControlador{
     private TableColumn pvp_column_fact;
     @FXML
     private TableColumn subtotal_column;
+    //Aux
+    private double total=0.0;
 
     //CONEXION SQL
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     static final String USER = "root";
-    static final String PASS = "admin";
+    static final String PASS = "24_Diolove";
 
     //Principal
     @FXML
@@ -144,6 +146,7 @@ public class fac_c_controlador extends LoginControlador{
                 valueFactory.setValue(1);
                 cantidad_box.setValueFactory(valueFactory);
             }
+
             else {
                 if (crearfac_button.isDisabled()) {
                     cargar_button.setDisable(true);
@@ -151,7 +154,11 @@ public class fac_c_controlador extends LoginControlador{
                 }
             }
         });
-
+        tabla_fac.setOnMouseClicked(event -> {
+            if (crearfac_button.isDisabled()){
+                quitar_button.setDisable(false);
+            }
+        });
         // Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -165,7 +172,11 @@ public class fac_c_controlador extends LoginControlador{
 
     //Funciones busqueda
     private void buscarnombre() {
-        String nombre_aux = nombre_field.getText();
+        String nombre_aux = nombre_field.getText().trim();
+        if (nombre_aux.isEmpty()) {
+            estado_bus_label.setText("Ingresa algo en el campo");
+            return;
+        }
         listaProductos.clear();
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
             String SQL_Query_select = "SELECT * FROM Productos WHERE Nombre LIKE ?";
@@ -200,6 +211,11 @@ public class fac_c_controlador extends LoginControlador{
     }
 
     private void buscarcodigo(){
+        String codigo_aux = cod_field.getText().trim();
+        if (codigo_aux.isEmpty()) {
+            estado_bus_label.setText("Ingresa algo en el campo");
+            return;
+        }
         int codigo = Integer.parseInt(cod_field.getText());
         listaProductos.clear();
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
@@ -257,11 +273,14 @@ public class fac_c_controlador extends LoginControlador{
             int cantidad = cantidad_box.getValue();
             double pvp = Double.parseDouble(productoSeleccionado.getPVP());
             double subtotal = cantidad * pvp;
-
-            ItemFactura itemFactura = new ItemFactura(idProducto, nombreProducto, productoSeleccionado.getPVP(), productoSeleccionado.getStock(), cantidad, subtotal);
-
+            total = total + subtotal;
+            DecimalFormat decimalFormat = new DecimalFormat("#.00");
+            String totalFormateado = decimalFormat.format(total);
+            String subtotalFormateado = decimalFormat.format(subtotal);
+            ItemFactura itemFactura = new ItemFactura(idProducto, nombreProducto, productoSeleccionado.getPVP(), productoSeleccionado.getStock(), cantidad, subtotalFormateado);
 
             tabla_fac.getItems().add(itemFactura);
+            total_textfield.setText(totalFormateado);
             System.out.println(idProducto+ " " + nombreProducto + " " + cantidad + " " + subtotal);
             cantidad_box.getValueFactory().setValue(1);
             cod_field.clear();
@@ -274,10 +293,22 @@ public class fac_c_controlador extends LoginControlador{
 
         }
     }
-    private void eliminarprod(){
-
+    private void eliminarprod() {
+        Object itemSeleccionado = tabla_fac.getSelectionModel().getSelectedItem();
+        if (itemSeleccionado != null) {
+            String subtotalstring = (String) subtotal_column.getCellData(itemSeleccionado);
+            subtotalstring = subtotalstring.replace(",", ".");
+            double subtotal = Double.parseDouble(subtotalstring);
+            total = total - subtotal;
+            quitar_button.setDisable(true);
+            DecimalFormat decimalFormat = new DecimalFormat("#.00");
+            String totalFormateado = decimalFormat.format(total);
+            total_textfield.setText(totalFormateado);
+            tabla_fac.getItems().remove(itemSeleccionado);
+        } else {
+            quitar_button.setDisable(true);
+        }
     }
-
     //Funciones Factura
     private void activarfac(){
         crearfac_button.setDisable(true);
@@ -287,8 +318,10 @@ public class fac_c_controlador extends LoginControlador{
         idcli_textfield.setDisable(false);
         tel_textfield.setDisable(false);
         correo_textfield.setDisable(false);
+        total_textfield.setDisable(false);
     }
     private void cancelarfac(){
+        tabla_fac.getItems().clear();
         crearfac_button.setDisable(false);
         cancelar_button.setDisable(true);
         num_fac_textfield.setDisable(true);
@@ -296,6 +329,7 @@ public class fac_c_controlador extends LoginControlador{
         idcli_textfield.setDisable(true);
         tel_textfield.setDisable(true);
         correo_textfield.setDisable(true);
+        total_textfield.setDisable(true);
     }
     private void enviarfac(){
 

@@ -8,13 +8,13 @@ public class ItemFactura {
     private int cantidad;
     private String subtotal;
 
-    public ItemFactura(String ID, String Producto, String PVP, String Stock, int cantidad, double subtotal) {
+    public ItemFactura(String ID, String Producto, String PVP, String Stock, int cantidad, String subtotal) {
         this.ID = ID;
         this.Productos = Producto;
         this.PVP = PVP;
         this.Stock = Stock;
         this.cantidad = cantidad;
-        this.subtotal = String.valueOf(subtotal);
+        this.subtotal = subtotal;
     }
 
     public String getID() {
