@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.Revisar_Ventas_Controlador">
+   <children>
+      <TableView fx:id="tabla_revisar_ventas" layoutX="74.0" layoutY="100.0" prefHeight="200.0" prefWidth="452.0">
+        <columns>
+          <TableColumn fx:id="ventaID_colum" prefWidth="75.0" text="VentaID" />
+          <TableColumn fx:id="fecha_venta_colum" prefWidth="75.0" text="FechaVenta" />
+            <TableColumn fx:id="cajero_colum_ventas" prefWidth="75.0" text="Cajero" />
+            <TableColumn fx:id="producto_colum_ventas" prefWidth="75.0" text="Producto" />
+            <TableColumn fx:id="cantidad_colum_ventas" prefWidth="75.0" text="Cantidad" />
+            <TableColumn fx:id="subtotal_colum_ventas" prefWidth="75.0" text="Subtotal" />
+        </columns>
+      </TableView>
+      <Label layoutX="209.0" layoutY="39.0" text="REVISAR VENTAS">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="revisar_ventas_button" layoutX="138.0" layoutY="320.0" mnemonicParsing="false" text="REVISAR VENTAS" />
+      <Button fx:id="ventas_cajero_button" layoutX="274.0" layoutY="320.0" mnemonicParsing="false" text="VENTAS POR CAJERO" />
+      <Button fx:id="salir_button" layoutX="436.0" layoutY="320.0" mnemonicParsing="false" text="SALIR" />
+   </children>
+</AnchorPane>

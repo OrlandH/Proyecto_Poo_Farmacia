@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.Cajero2_controlador">
+   <children>
+      <Button fx:id="Salir_cajero2_button" layoutX="353.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="SALIR" />
+      <Button fx:id="consultar_caj2_button" layoutX="188.0" layoutY="322.0" mnemonicParsing="false" text="CONSULTAR" />
+      <TableView fx:id="table_cajero2" layoutX="118.0" layoutY="81.0" prefHeight="200.0" prefWidth="377.0">
+        <columns>
+          <TableColumn fx:id="ventaID_colum" prefWidth="75.0" text="VentaID" />
+          <TableColumn fx:id="FechaVenta_colum" prefWidth="75.0" text="FechaVenta" />
+            <TableColumn fx:id="Cajero_colum" prefWidth="75.0" text="Cajero" />
+            <TableColumn fx:id="Producto_Colum" prefWidth="75.0" text="Producto" />
+            <TableColumn fx:id="Cantidad_Colum" prefWidth="75.0" text="Cantidad" />
+        </columns>
+      </TableView>
+      <Label layoutX="286.0" layoutY="40.0" text="Cajero2" />
+   </children>
+</AnchorPane>

@@ -97,9 +97,9 @@ public class fac_c_controlador extends LoginControlador{
     private TableColumn subtotal_column;
 
     //CONEXION SQL
-    static final String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
+    static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     static final String USER = "root";
-    static final String PASS = "Skarabus6";
+    static final String PASS = "admin";
 
     //Principal
     @FXML

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.Cajero1_controlador">
+   <children>
+      <Button fx:id="Salir_cajero1" layoutX="342.0" layoutY="308.0" mnemonicParsing="false" text="SALIR" />
+      <Label layoutX="275.0" layoutY="45.0" text="CAJERO 1" />
+      <TableView fx:id="table_cajero1" layoutX="112.0" layoutY="83.0" prefHeight="200.0" prefWidth="378.0">
+        <columns>
+          <TableColumn fx:id="ventaID_colum" prefWidth="75.0" text="VentaID" />
+          <TableColumn fx:id="cajero_colum" prefWidth="75.0" text="FechaVenta" />
+            <TableColumn fx:id="fecha_colum" prefWidth="75.0" text="Cajero" />
+            <TableColumn fx:id="producto_colum" prefWidth="75.0" text="Producto" />
+            <TableColumn fx:id="cantidad_colum" prefWidth="75.0" text="Cantidad" />
+        </columns>
+      </TableView>
+      <Button fx:id="consultar_button" layoutX="203.0" layoutY="308.0" mnemonicParsing="false" text="CONSULTAR" />
+   </children>
+</AnchorPane>

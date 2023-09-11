@@ -12,7 +12,9 @@ import java.io.IOException;
 
 public class prin_admin_controlador {
     @FXML
-    private Button stock_button;
+    private Button ingresar_productos_button;
+    @FXML
+    private Button actualizar_stock_productos;
     @FXML
     private Button nuevouser_button;
     @FXML
@@ -25,10 +27,12 @@ public class prin_admin_controlador {
     //Principal
     @FXML
     private void initialize(){
-        stock_button.setOnAction(event -> ir_stock());
+
         nuevouser_button.setOnAction(event -> crear_user());
         revisar_button.setOnAction(event -> his_ventas());
         logout_button.setOnAction(event -> logout());
+        ingresar_productos_button.setOnAction(event -> Ingresar_Productos());
+        actualizar_stock_productos.setOnAction(event -> Actualizar_stock_productos());
     }
     public void setNombreUsuario(String nombreUsuario){
         user_label.setText(nombreUsuario);
@@ -50,7 +54,18 @@ public class prin_admin_controlador {
         stage.setScene(scene);
     }
     private void his_ventas(){
-
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Revisar_Ventas.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        // Cambiar la escena
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) revisar_button.getScene().getWindow();
+        stage.setScene(scene);
     }
     private void logout(){
         //Cambiar el FXML
@@ -67,5 +82,33 @@ public class prin_admin_controlador {
         Stage stage = (Stage) logout_button.getScene().getWindow();
         stage.setScene(scene);
 
+    }
+
+    private void Ingresar_Productos (){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Ingresar_Productos.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        }catch (IOException e){
+            e.printStackTrace();
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ingresar_productos_button.getScene().getWindow();
+        stage.setScene(scene);
+    }
+
+    private void Actualizar_stock_productos (){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Stock_productos.fxml"));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        }catch (IOException e){
+            e.printStackTrace();
+            return;
+        }
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ingresar_productos_button.getScene().getWindow();
+        stage.setScene(scene);
     }
 }

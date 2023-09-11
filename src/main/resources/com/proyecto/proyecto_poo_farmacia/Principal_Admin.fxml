@@ -6,24 +6,25 @@
 
 <AnchorPane prefHeight="344.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyecto.proyecto_poo_farmacia.controladores.prin_admin_controlador">
    <children>
-      <Button fx:id="stock_button" layoutX="126.0" layoutY="118.0" mnemonicParsing="false" onAction="#initialize" prefHeight="40.0" prefWidth="202.0" text="Ingresar/Actualizar Stock" />
-      <Button fx:id="revisar_button" layoutX="126.0" layoutY="227.0" mnemonicParsing="false" onAction="#initialize" prefHeight="40.0" prefWidth="202.0" text="Revisar Ventas" />
-      <Button fx:id="nuevouser_button" layoutX="126.0" layoutY="172.0" mnemonicParsing="false" onAction="#initialize" prefHeight="40.0" prefWidth="202.0" text="Crear nuevo Usuario" />
-      <Button fx:id="logout_button" layoutX="168.0" layoutY="285.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="118.0" text="Cerrar Sesion" />
-      <Label layoutX="50.0" layoutY="40.0" text="Bienvenido">
+      <Button fx:id="ingresar_productos_button" layoutX="138.0" layoutY="93.0" mnemonicParsing="false" onAction="#initialize" prefHeight="40.0" prefWidth="202.0" text="Ingresar Productos" />
+      <Button fx:id="revisar_button" layoutX="138.0" layoutY="192.0" mnemonicParsing="false" onAction="#initialize" prefHeight="40.0" prefWidth="202.0" text="Revisar Ventas" />
+      <Button fx:id="nuevouser_button" layoutX="140.0" layoutY="242.0" mnemonicParsing="false" onAction="#initialize" prefHeight="40.0" prefWidth="202.0" text="Crear nuevo Usuario" />
+      <Button fx:id="logout_button" layoutX="182.0" layoutY="295.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="118.0" text="Cerrar Sesion" />
+      <Label layoutX="85.0" layoutY="14.0" text="Bienvenido">
          <font>
             <Font name="Franklin Gothic Book" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="user_label" layoutX="267.0" layoutY="41.0" text="User_Admin" textFill="#6f6c6c">
+      <Label fx:id="user_label" layoutX="218.0" layoutY="15.0" text="User_Admin" textFill="#6f6c6c">
          <font>
             <Font name="Franklin Gothic Book" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="157.0" layoutY="83.0" text="¿Qué desea hacer?">
+      <Label layoutX="157.0" layoutY="52.0" text="¿Qué desea hacer?">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
+      <Button fx:id="actualizar_stock_productos" layoutX="138.0" layoutY="141.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="202.0" text="Actualizar Stock" />
    </children>
 </AnchorPane>

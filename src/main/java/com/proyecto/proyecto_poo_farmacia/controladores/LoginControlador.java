@@ -26,9 +26,9 @@ public class LoginControlador{
     private Button limpiar_button;
     @FXML
     private Label estado_label;
-    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
+    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     private static String USER = "root";
-    private static String PASS = "Skarabus6";
+    private static String PASS = "admin";
     private prin_admin_controlador principalController;
     private login_c_controlador ControllerCajero;
 

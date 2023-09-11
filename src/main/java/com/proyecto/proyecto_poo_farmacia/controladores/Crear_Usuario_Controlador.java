@@ -30,9 +30,9 @@ public class Crear_Usuario_Controlador {
     private Button button_registrar;
     @FXML
     private Button leave_main;
-    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA_PROYECTO";
+    private static String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     private static String USER = "root";
-    private static String PASS = "Skarabus6";
+    private static String PASS = "admin";
 
     @FXML
     private void initialize(){
@@ -81,7 +81,7 @@ public class Crear_Usuario_Controlador {
     }
 
     private void Salir() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Admin.fxml"));
         Parent root;
         try {
             root = fxmlLoader.load();
