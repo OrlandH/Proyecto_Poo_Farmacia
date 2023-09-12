@@ -32,7 +32,7 @@ public class Crear_Usuario_Controlador {
     private Button leave_main;
     private static String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     private static String USER = "root";
-    private static String PASS = "admin";
+    private static String PASS = "24_Diolove";
 
     @FXML
     private void initialize(){

@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Me olvide de algo jsjsjs Ahora si">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e600b934-873b-4b1b-a9b1-9bf74fd1835e" name="Changes" comment="Vuelve mensajes alerta y total funcionando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/LoginControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/POO/ItemFactura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/POO/ItemFactura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Cajero1_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Cajero1_controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Cajero2_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Cajero2_controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Crear_Usuario_Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Crear_Usuario_Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Ingresar_Productos_Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Ingresar_Productos_Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Revisar_Ventas_Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Revisar_Ventas_Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Stock_productos_Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/Stock_productos_Controlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/proyecto/proyecto_poo_farmacia/controladores/fac_c_controlador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +40,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -47,26 +52,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/FamT/Downloads/mysql-connector-j-8.0.33.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/FamT/Downloads/mysql-connector-j-8.0.33.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\FamT\IdeaProjects\Proyecto_Poo_Farmacia\src\main\java\com\proyecto\proyecto_poo_farmacia" />
@@ -124,7 +129,8 @@
       <workItem from="1694375700303" duration="1383000" />
       <workItem from="1694380929460" duration="25301000" />
       <workItem from="1694448019110" duration="398000" />
-      <workItem from="1694448434353" duration="1742000" />
+      <workItem from="1694448434353" duration="2413000" />
+      <workItem from="1694464363588" duration="15642000" />
     </task>
     <task id="LOCAL-00001" summary="Dibujo de 3 interfaces y controladores basicos">
       <option name="closed" value="true" />
@@ -198,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693698280928</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Vuelve mensajes alerta y total funcionando">
+      <option name="closed" value="true" />
+      <created>1694450252587</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1694450252587</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +226,8 @@
     <MESSAGE value="Activar y desactivar funcionalidad en factura y busqueda" />
     <MESSAGE value="Activar y desactivar funcionalidad en factura y busqueda p2" />
     <MESSAGE value="Me olvide de algo jsjsjs Ahora si" />
-    <option name="LAST_COMMIT_MESSAGE" value="Me olvide de algo jsjsjs Ahora si" />
+    <MESSAGE value="Vuelve mensajes alerta y total funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vuelve mensajes alerta y total funcionando" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

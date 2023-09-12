@@ -32,7 +32,7 @@ public class Ingresar_Productos_Controlador {
 
     private static String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     private static String USER = "root";
-    private static String PASS = "admin";
+    private static String PASS = "24_Diolove";
 
     @FXML
     private void initialize(){
@@ -78,10 +78,20 @@ public class Ingresar_Productos_Controlador {
                     alert.setTitle("Éxito");
                     alert.setHeaderText("Inserción Exitosa");
                     alert.setContentText("El Producto se ha ingresado correctamente.");
+                    TextField_id_producto.setText("");
+                    TextFiedl_Nombre_producto.setText("");
+                    TextField_Descripcion_producto.setText("");
+                    TextField_Precio_Productos.setText("");
+                    TextField_stock_productos.setText("");
                 } else {
                     alert.setTitle("Error");
                     alert.setHeaderText("Error en la inserción");
                     alert.setContentText("No se pudo ingresar el producto en la base de datos.");
+                    TextField_id_producto.setText("");
+                    TextFiedl_Nombre_producto.setText("");
+                    TextField_Descripcion_producto.setText("");
+                    TextField_Precio_Productos.setText("");
+                    TextField_stock_productos.setText("");
                 }
                 alert.showAndWait();
             } catch (SQLException e){

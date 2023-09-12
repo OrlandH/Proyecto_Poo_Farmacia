@@ -161,11 +161,24 @@ public class fac_c_controlador extends LoginControlador{
         });
         // Obtener la fecha actual
         LocalDate fechaActual = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fechaFormateada = fechaActual.format(formatter);
         fecha_label.setText(fechaFormateada);
     }
-
+    private void mostrarMensajeError(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    private void mostrarMensajeExito(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Éxito");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
     public void setNomLabel(String text) {
         nom_label.setText(text);
     }
@@ -281,16 +294,27 @@ public class fac_c_controlador extends LoginControlador{
 
             tabla_fac.getItems().add(itemFactura);
             total_textfield.setText(totalFormateado);
-            System.out.println(idProducto+ " " + nombreProducto + " " + cantidad + " " + subtotal);
+            System.out.println(idProducto + " " + nombreProducto + " " + cantidad + " " + subtotal);
             cantidad_box.getValueFactory().setValue(1);
             cod_field.clear();
             nombre_field.clear();
-            estado_bus_label.setText("Producto Registrado con Exito");
-            buscar_cod_button.setDisable(false);
-            buscar_nom_button.setDisable(false);
+            estado_bus_label.setText("Producto Registrado con Éxito");
 
+            int resta_stock = Integer.parseInt(productoSeleccionado.getStock());
+            int nuevo_stock = resta_stock - cantidad;
 
+            try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS)) {
+                String updateStockQuery = "UPDATE Productos SET Stock = ? WHERE ID = ?";
+                PreparedStatement pstmtUpdateStock = connection.prepareStatement(updateStockQuery);
+                pstmtUpdateStock.setInt(1, nuevo_stock);
+                pstmtUpdateStock.setString(2, idProducto);
+                pstmtUpdateStock.executeUpdate();
 
+                pstmtUpdateStock.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
     private void eliminarprod() {
@@ -305,25 +329,50 @@ public class fac_c_controlador extends LoginControlador{
             String totalFormateado = decimalFormat.format(total);
             total_textfield.setText(totalFormateado);
             tabla_fac.getItems().remove(itemSeleccionado);
+
         } else {
             quitar_button.setDisable(true);
         }
     }
     //Funciones Factura
     private void activarfac(){
+        salir_button.setDisable(true);
         crearfac_button.setDisable(true);
         cancelar_button.setDisable(false);
+        enviar_button.setDisable(false);
         num_fac_textfield.setDisable(false);
         nom_textfield.setDisable(false);
         idcli_textfield.setDisable(false);
         tel_textfield.setDisable(false);
         correo_textfield.setDisable(false);
         total_textfield.setDisable(false);
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            String sql = "SELECT MAX(ID) FROM Ventas";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                int ultimoID = rs.getInt(1);
+                int nuevoID = ultimoID + 1;
+                num_fac_textfield.setText(String.valueOf(nuevoID));
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     private void cancelarfac(){
+        salir_button.setDisable(false);
+        num_fac_textfield.setText("");
         tabla_fac.getItems().clear();
         crearfac_button.setDisable(false);
         cancelar_button.setDisable(true);
+        enviar_button.setDisable(true);
         num_fac_textfield.setDisable(true);
         nom_textfield.setDisable(true);
         idcli_textfield.setDisable(true);
@@ -331,12 +380,78 @@ public class fac_c_controlador extends LoginControlador{
         correo_textfield.setDisable(true);
         total_textfield.setDisable(true);
     }
-    private void enviarfac(){
+    private void enviarfac() {
+        int nuevoID = 0;
+        int idVenta = Integer.parseInt(num_fac_textfield.getText());
+        LocalDate fechaActual = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fechaFormateada = fechaActual.format(formatter);
 
+        String nombreCajero = nom_label.getText();
+
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            String consultaCajero = "SELECT ID FROM Usuarios WHERE Nombre = ?";
+            PreparedStatement pstmtConsultaCajero = conn.prepareStatement(consultaCajero);
+            pstmtConsultaCajero.setString(1, nombreCajero);
+
+            ResultSet rs = pstmtConsultaCajero.executeQuery();
+            int idCajero = 0;
+
+            if (rs.next()) {
+                idCajero = rs.getInt("ID");
+            }
+
+            String insertVentasQuery = "INSERT INTO Ventas (ID, ID_Cajero, Fecha) VALUES (?, ?, ?)";
+            PreparedStatement pstmtVentas = conn.prepareStatement(insertVentasQuery);
+            pstmtVentas.setInt(1, idVenta);
+            pstmtVentas.setInt(2, idCajero);
+            pstmtVentas.setString(3, fechaFormateada);
+            pstmtVentas.executeUpdate();
+
+            String sql = "SELECT MAX(ID) FROM DetalleVenta";
+            Statement stmt = conn.createStatement();
+            ResultSet rs2 = stmt.executeQuery(sql);
+
+            if (rs2.next()) {
+                int ultimoID = rs2.getInt(1);
+                nuevoID = ultimoID + 1;
+            }
+            rs.close();
+            stmt.close();
+            ObservableList<ItemFactura> items = tabla_fac.getItems();
+
+            for (ItemFactura rowData : items) {
+                int codProducto = Integer.parseInt(rowData.getID());
+                int cantidad = rowData.getCantidad();
+
+
+                String insertDetalleVentaQuery = "INSERT INTO DetalleVenta (ID, ID_Venta, ID_Producto, Cantidad) VALUES (?, ?, ?, ?)";
+                PreparedStatement pstmtDetalleVenta = conn.prepareStatement(insertDetalleVentaQuery);
+                pstmtDetalleVenta.setInt(1, nuevoID);
+                pstmtDetalleVenta.setInt(2, idVenta);
+                pstmtDetalleVenta.setInt(3, codProducto);
+                pstmtDetalleVenta.setInt(4, cantidad);
+                pstmtDetalleVenta.executeUpdate();
+
+                nuevoID++;
+
+                pstmtDetalleVenta.close();
+
+            }
+            conn.close();
+            mostrarMensajeExito("Factura creada con Éxito");
+            cancelarfac();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mostrarMensajeError("Hubo un error al crear la factura");
+            cancelarfac();
+        }
     }
+
+
     private void regresar(){
-        //Cambiar el FXML
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/proyecto/proyecto_poo_farmacia/Principal_Cajero.fxml"));
         Parent root;
         try {
             root = fxmlLoader.load();
@@ -344,10 +459,8 @@ public class fac_c_controlador extends LoginControlador{
             e.printStackTrace();
             return;
         }
-        // Cambiar la escena
         Scene scene = new Scene(root);
         Stage stage = (Stage) salir_button.getScene().getWindow();
         stage.setScene(scene);
     }
-
 }

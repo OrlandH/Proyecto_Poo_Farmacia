@@ -31,7 +31,7 @@ public class Stock_productos_Controlador {
 
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     static final String USER = "root";
-    static final String PASS = "admin";
+    private static String PASS = "24_Diolove";
 
     private int idProductoBuscado;
 
@@ -70,12 +70,14 @@ public class Stock_productos_Controlador {
                 idProductoBuscado = idProducto;
             } else {
                 mostrarAlerta("Producto no encontrado", "No se encontró un producto con el ID especificado.");
+                Texfield_id_producto.setText("");
             }
         } catch (SQLException e){
             e.printStackTrace();
             mostrarAlerta("Error en la Base de Datos", "Ocurrió un error al acceder a la base de datos.");
         } catch (NumberFormatException e) {
             mostrarAlerta("Formato Incorrecto", "El ID del producto debe ser un número válido.");
+            Texfield_id_producto.setText("");
         }
     }
 
@@ -90,6 +92,7 @@ public class Stock_productos_Controlador {
             int nuevoStock = Integer.parseInt(nuevoStockStr);
             if (nuevoStock < 0){
                 mostrarAlerta("Stock no válido", "El nuevo stock debe ser mayor o igual a cero.");
+                Texfield_id_producto.setText("");
                 return;
             }
 
@@ -104,8 +107,16 @@ public class Stock_productos_Controlador {
             if (filasAfectadas > 0){
                 mostrarAlerta("Actualización Exitosa","El Stock del producto fue actualizado con éxito.");
                 TextField_stock_actual.setText(String.valueOf(nuevoStock));
+                Texfield_id_producto.setText("");
+                TextFiedl_Nombre_producto.setText("");
+                TextField_stock_actual.setText("");
+                TextFiedl_stock_nuevo.setText("");
             } else {
                 mostrarAlerta("Error al Actualizar","No se pudo actualizar el stock del producto.");
+                Texfield_id_producto.setText("");
+                TextFiedl_Nombre_producto.setText("");
+                TextField_stock_actual.setText("");
+                TextFiedl_stock_nuevo.setText("");
             }
         } catch (SQLException e){
             e.printStackTrace();

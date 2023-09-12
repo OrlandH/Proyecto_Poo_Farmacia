@@ -40,7 +40,7 @@ public class Revisar_Ventas_Controlador {
 
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     static final String USER = "root";
-    static final String PASS = "admin";
+    private static String PASS = "24_Diolove";
 
     private ObservableList<Venta> ventasData = FXCollections.observableArrayList();
 
@@ -60,16 +60,14 @@ public class Revisar_Ventas_Controlador {
     }
 
     private void cargarDatosDesdeBD() {
-        ventasData.clear(); // Limpiar los datos existentes
+        ventasData.clear();
 
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
              Statement statement = connection.createStatement()) {
 
-            // Realizar la consulta a la vista
-            String sqlQuery = "SELECT * FROM VistaVentas";
+            String sqlQuery = "SELECT * FROM VistaVentas ORDER BY VentaID ASC";
             ResultSet resultSet = statement.executeQuery(sqlQuery);
 
-            // Procesar los resultados de la consulta y agregarlos a la lista
             while (resultSet.next()) {
                 int ventaID = resultSet.getInt("VentaID");
                 String fechaVenta = resultSet.getString("FechaVenta");
@@ -81,7 +79,7 @@ public class Revisar_Ventas_Controlador {
                 ventasData.add(new Venta(ventaID, fechaVenta, cajero, producto, cantidad, subtotal));
             }
 
-            // Asignar los datos a la tabla
+
             tabla_revisar_ventas.setItems(ventasData);
 
         } catch (SQLException e) {

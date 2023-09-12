@@ -34,7 +34,7 @@ public class Cajero1_controlador {
 
     static final String DB_URL = "jdbc:mysql://localhost/FARMACIA";
     static final String USER = "root";
-    static final String PASS = "admin";
+    private static String PASS = "24_Diolove";
 
     @FXML
     private void initialize(){
