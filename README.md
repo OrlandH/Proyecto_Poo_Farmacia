@@ -24,9 +24,6 @@ El administrador podrá:
 
 Descripción de la pantalla de inicio y sus elementos.
 
-### Menú Principal
-![Menú Principal](/ruta/imagen2.png)
-
 Descripción de las opciones disponibles en el menú principal.
 
 ## Funcionalidades del Administrador
@@ -77,9 +74,7 @@ Crear Factura
 
 ## Conclusión
 Resumen final 
+Este sistema de gestión de farmacia desarrollado como parte de nuestro aprendizaje en Programación Orientada a Objetos a lo largo de este semestre.
+La finalidad principal es mejorar la eficiencia y precisión en la gestión de la farmacia, agilizando el proceso de ventas y manteniendo un registro detallado de todas las operaciones. 
 
----
 
-*Nota: Asegúrate de reemplazar "/ruta/imagenX.png" con las rutas reales de tus capturas de pantalla.*
-
-Este es solo un ejemplo bás
