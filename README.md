@@ -72,6 +72,7 @@ Dentro de esta funcionalidad podemos crear un nuevo usuario y este posteriorment
 
 Crear Factura
 ### Factura
+
 ![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/102696740/fbbe4cd5-4a1c-42fe-aedc-a2e3aaf716e1)
 
 ## Conclusión
