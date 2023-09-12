@@ -1,4 +1,6 @@
 # Proyecto_Poo_Farmacia
+## Integrantes: 
+Juan Gualotuña, Juan Falconi, Heyer Tinoco
 # Documentación de Software
 
 ## Introducción
@@ -17,6 +19,8 @@ El administrador podrá:
 • Revisar las ventas realizadas por todos los vendedores e individualmente.
 • Agregar usuarios cajeros.
 
+## Manual de Usuario:
+https://www.youtube.com/watch?v=lnzEc9vdVUQ
 
 ## Interfaz de Usuario
 ### Pantalla de Inicio
@@ -54,10 +58,12 @@ Podemos seleccionar el cajero al cual queremos revisar sus ventas.
 
 ### Revisar Ventas Cajero 1
 ![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/102696740/b13aff50-fb2c-4570-a70f-cefb0d697ac5)
+Aqui podemos revisar todo lo que a realizado el cajero 1
 ![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/102696740/2c7f518f-3f1f-4562-ac08-605eb0dfa3d9)
 
 ### Revisar Ventas Cajero 2
 ![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/102696740/38072089-4579-4b96-9b5e-8c7501adc0a9)
+Aqui podemos revisar todo lo que a realizado el cajero 2
 ![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/102696740/bdd2b2e5-255e-49fc-92b0-8cac9fc26fef)
 
 ### Crear Usuario
@@ -71,6 +77,19 @@ Crear Factura
 ### Factura
 
 ![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/102696740/fbbe4cd5-4a1c-42fe-aedc-a2e3aaf716e1)
+Aqui tenemos el sistema de facturacion. En el menu de la derecha esta la opcion de busqueda, donde podemos buscar por nombre: 
+![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/117741739/e3d4bcf2-efd2-4da3-8fcd-0253aeda48fb)
+Y nos saldra todos los similares a ese nombre. 
+Y tambien por código: 
+![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/117741739/43ae446b-be33-4427-b3e6-93d2e72682d2)
+Donde nos saldra un producto en especifico. 
+
+En cuanto a la facturacion, no se activara hasta que presionemos "Crear Factura"
+Asi que una vez presionado, podemos agregar productos a la factura
+![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/117741739/ffab4695-0dff-4252-a385-a31c188efa87)
+
+Cuando presionemos enviar, se creara la factura en la base de datos, con  todo calculado: 
+![image](https://github.com/OrlandH/Proyecto_Poo_Farmacia/assets/117741739/4dbe19ea-3f85-41ca-b0af-8f26b38bdf1f)
 
 ## Conclusión
 Resumen final 
